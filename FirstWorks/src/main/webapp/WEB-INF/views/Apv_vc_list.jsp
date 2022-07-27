@@ -8,8 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body> 
-<c:forEach var="cfwait" items="${list1 }">     
-	<a href="/cfdetail?apv_no=${cfwait.apv_no }">${cfwait.apv_vc_tit }</a><br>
+<c:forEach var="Apv_cf_wait" items="${list1 }">     
+	<a href="/cfdetail?apv_no=${Apv_cf_wait.apv_no }">${Apv_cf_wait.apv_vc_tit }</a><br>
 </c:forEach>
 </body>
 </html>

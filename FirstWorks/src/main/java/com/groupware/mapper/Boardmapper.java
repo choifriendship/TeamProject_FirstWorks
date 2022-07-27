@@ -18,7 +18,7 @@ public interface Boardmapper {
 			+ "(#{apv_no, jdbcType=INTEGER},#{mem_no, jdbcType=VARCHAR},#{apv_vc_tit, jdbcType=VARCHAR},#{apv_vc_file, jdbcType=VARCHAR},#{apv_vc_rjt, jdbcType=VARCHAR},#{apv_vc_cf_no, jdbcType=INTEGER},#{apv_vc_txt, jdbcType=VARCHAR},#{apv_vc_str_dt},#{apv_vc_end_dt},#{dept_no, jdbcType=VARCHAR})")
 	public void apv_vc_insert(Apv_vc_dto board);
 
-//	휴가신청서 불러오기(사원번호) -> 대기문서
+//	휴가신청서 불러오기(사원번호) -> 대기문서함
 	@Select("select * from apv_vc_tb where mem_no=#{mem_no}")
 	public List<Apv_vc_dto> apv_vc_list(Apv_vc_dto board);
 
