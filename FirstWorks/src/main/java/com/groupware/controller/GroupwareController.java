@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.groupware.dto.Apv_vc_dto;
 import com.groupware.service.GroupwareService;
@@ -33,7 +34,7 @@ public class GroupwareController {
 	}
 
 	// 휴가신청서를 불러온다.
-	@GetMapping("/apv_vc_form") // localhost:8080/list �ް���û�� URI
+	@GetMapping("/apv_vc_form") // localhost:8080/list 
 	public String main(Model m) {
 		m.addAttribute("list", service.test());
 		return "Apv_vc_form";
@@ -55,23 +56,11 @@ public class GroupwareController {
 		return "Apv_vc_detail";
 	}
 
-//	 @PostMapping("/vcpro") 
-//	 public String vc_insert(Apv_vc_dto board) {
-//		 service.vc_insert(board);		 
-//		 return "home";	 
-//	 }
-//	 
-//	 @PostMapping('/vcpro')
-//	 public String vcinsert(Apv_vc_dto board,Model m) {
-//		 String date = date;
-//		 String title = title;
-//		 String content = content;
-//		 m.addAttribute("date",date);
-//		 m.addAttribute("title",title);
-//		 m.addAttribute("content",content);
-//		 m.addAttributes("list",board);
-//		 service.vcinsert(board);
-//		 return "home";
-//	 }
+	 @PostMapping("/vcpro") 
+	 public String vc_insert(Apv_vc_dto board) {
+		 service.apv_vc_insert(board);		 
+		 return "home";	 
+	 }
+
 
 }
