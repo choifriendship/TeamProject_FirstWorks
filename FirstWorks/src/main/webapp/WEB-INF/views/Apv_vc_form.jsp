@@ -186,7 +186,7 @@ footer{
       <!-- 어사이드 -->
       <aside>
         <div id="date">
-          <p id="date1">휴가날짜:<span id="datein"></span><input name="apv_vc_str_no" type="date"> 부터 <input type="date" name="apv_vc_end_no"> 까지</p>
+          <p id="date1">휴가날짜:<span id="datein"></span><input name="apv_vc_str_dt" type="date"> 부터 <input type="date" name="apv_vc_end_dt"> 까지</p>
         </div>
         <div id="no">
           <div id="left" class="aa">
@@ -199,12 +199,12 @@ footer{
           </div>
         </div>
         <div id="doct">
-          <h1>문서제목:<span id="doct1"></span></h1><input type="text" name="apv_vc_title" id="doct2">
+          <h1>문서제목:<span id="doct1"></span></h1><input type="text" name="apv_vc_tit" id="doct2">
         </div>
       </aside>
       <!-- 메인 -->
       <main>
-        <textarea name="apv_vc_text" placeholder="본문내용"></textarea>
+        <textarea name="apv_vc_txt" placeholder="본문내용"></textarea>
       </main>
       <!-- 푸터 -->
       <footer>

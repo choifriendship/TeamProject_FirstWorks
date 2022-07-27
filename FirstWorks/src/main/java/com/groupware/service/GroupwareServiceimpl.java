@@ -17,10 +17,10 @@ public class GroupwareServiceimpl implements GroupwareService {
 
 	public List<Mem_dto> test() {
 		return mapper.test();
-	}
+	}	
 
 //	휴가신청서 입력
-	public void apv_vc_insert(Apv_vc_dto board) {
+	public void apv_vc_insert(Apv_vc_dto board) {		
 		mapper.apv_vc_insert(board);
 	}
 
@@ -48,5 +48,7 @@ public class GroupwareServiceimpl implements GroupwareService {
 	public Apv_over_dto apv_over_detail(Apv_over_dto board) {
 		return mapper.apv_over_detail(board);
 	}
+
+	
 
 }

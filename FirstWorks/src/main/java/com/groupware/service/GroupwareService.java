@@ -8,7 +8,7 @@ import com.groupware.dto.Mem_dto;
 
 public interface GroupwareService {
 	public List<Mem_dto> test();
-
+	
 //	휴가신청서 입력
 	public void apv_vc_insert(Apv_vc_dto board);
 
