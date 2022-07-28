@@ -88,6 +88,4 @@ public class GroupwareController {
 		return "Apv_over_detail";
 	}
 
-	// 결재 양식
-
 }
