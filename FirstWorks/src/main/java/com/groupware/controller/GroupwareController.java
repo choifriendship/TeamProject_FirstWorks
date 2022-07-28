@@ -2,6 +2,8 @@ package com.groupware.controller;
 
 import java.text.SimpleDateFormat;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -43,9 +45,9 @@ public class GroupwareController {
 
 	// 결재대기함에 있는 휴가 신청서를 불러온다.
 	@GetMapping("/apv_vc_list")
-	public String apv_vc_list(Model m) {
+	public String apv_vc_list(Model m, HttpSession session) {
 		Apv_vc_dto board = new Apv_vc_dto();
-		board.setMem_no("asd");
+		board.setMem_no("1"); // 세션 값 받아오기
 		m.addAttribute("list1", service.apv_vc_list(board));
 		return "Apv_vc_list";
 	}
@@ -57,8 +59,9 @@ public class GroupwareController {
 		return "Apv_vc_detail";
 	}
 
+	// 결재 클릭 시 insert 된다.
 	@PostMapping("/apv_vc_pro")
-	public String vc_insert(Apv_vc_dto board) {
+	public String apv_vc_insert(Apv_vc_dto board) {
 		service.apv_vc_insert(board);
 		return "home";
 	}
@@ -84,5 +87,7 @@ public class GroupwareController {
 		m.addAttribute("over2", service.apv_over_detail(board));
 		return "Apv_over_detail";
 	}
+
+	// 결재 양식
 
 }

@@ -212,7 +212,7 @@ footer{
           <p>파일첨부</p>
         </div>
         <div id="fooright">
-          <!-- <input type="file" id="file"> -->
+          <input type="file" name="files">
         </div>
       </footer>
     </div>

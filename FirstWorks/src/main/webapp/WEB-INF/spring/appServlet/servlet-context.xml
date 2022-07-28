@@ -26,10 +26,12 @@
 	<!-- <beans:property name="defaultEncoding" value="utf-8"></beans:property>
 	<beans:property name="maxUploadSize" value="104857560"></beans:property>
 	<beans:property name="maxUploadSizePerFile" value="2097152"></beans:property>
-	<beans:property name="uploadTempDir" value="file:/c:/upload/tmp"></beans:property>
+	<beans:property name="uploadTempDir" value="file:/C:/upload/tmp"></beans:property>
 	<beans:property name="maxInMemorySize" value="104857560"></beans:property> -->
 	</beans:bean>
 	
+	<!-- 예외 처리 -->
+	<context:component-scan base-package="com.groupware.exception" />
 	
 	<context:component-scan base-package="com.groupware.controller" />
 	
