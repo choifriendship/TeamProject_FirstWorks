@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.groupware.dto.Apv_over_dto;
 import com.groupware.dto.Apv_vc_dto;
-import com.groupware.service.GroupwareService;
+import com.groupware.service.ApprovalService;
 
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Controller
-public class GroupwareController {
+public class ApprovalController {
 	@Autowired
-	GroupwareService service;
+	ApprovalService service;
 
 	@InitBinder
 	public void initbinder(WebDataBinder binder) {
@@ -96,5 +96,7 @@ public class GroupwareController {
 		service.apv_over_insert(board);
 		return "home";
 	}
+	
+	// 
 
 }

@@ -9,7 +9,7 @@ import com.groupware.dto.Apv_over_dto;
 import com.groupware.dto.Apv_vc_dto;
 import com.groupware.dto.Mem_dto;
 
-public interface Boardmapper {
+public interface ApprovalMapper {
 	@Select("select * from mem_tb")
 	public List<Mem_dto> test();
 

@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service;
 import com.groupware.dto.Apv_over_dto;
 import com.groupware.dto.Apv_vc_dto;
 import com.groupware.dto.Mem_dto;
-import com.groupware.mapper.Boardmapper;
+import com.groupware.mapper.ApprovalMapper;
 
 @Service
-public class GroupwareServiceimpl implements GroupwareService {
+public class ApprovalServiceimpl implements ApprovalService {
 	@Autowired
-	Boardmapper mapper;
+	ApprovalMapper mapper;
 
 	public List<Mem_dto> test() {
 		return mapper.test();
