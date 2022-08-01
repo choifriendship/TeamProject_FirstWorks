@@ -13,9 +13,11 @@ public interface Boardmapper {
 	@Select("select * from mem_tb")
 	public List<Mem_dto> test();
 
-//	휴가신청서 입력하기
-	@Insert("insert into apv_vc_tb values "
-			+ "(#{apv_no, jdbcType=INTEGER},#{mem_no, jdbcType=VARCHAR},#{apv_vc_tit, jdbcType=VARCHAR},#{apv_vc_file, jdbcType=VARCHAR},#{apv_vc_rjt, jdbcType=VARCHAR},#{apv_vc_cf_no, jdbcType=INTEGER},#{apv_vc_txt, jdbcType=VARCHAR},#{apv_vc_str_dt},#{apv_vc_end_dt},#{dept_no, jdbcType=VARCHAR})")
+//	휴가신청서 입력하기 (휴가신청서 테이블, 전자결재 테이블 동시에 입력)
+	@Insert("insert all into apv_vc_tb values"
+			+ "('1',#{apv_vc_tit, jdbcType=VARCHAR}, #{apv_vc_file, jdbcType=VARCHAR}, #{apv_vc_rjt, jdbcType=VARCHAR}, #{apv_vc_cf_no, jdbcType=INTEGER}, #{apv_vc_txt, jdbcType=VARCHAR}, #{apv_vc_str_dt}, #{apv_vc_end_dt}, #{dept_no, jdbcType=VARCHAR}, inc_seq.NEXTVAL)"
+			+ "into apv_tb (apv_no, mem_no, apv_vc_no) values (inc_seq.NEXTVAL,'1', inc_seq.NEXTVAL) "
+			+ "select * from dual")
 	public void apv_vc_insert(Apv_vc_dto board);
 
 //	휴가신청서 불러오기(사원번호) -> 대기문서함

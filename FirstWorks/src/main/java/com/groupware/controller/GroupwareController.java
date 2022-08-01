@@ -43,6 +43,13 @@ public class GroupwareController {
 		return "Apv_vc_form";
 	}
 
+	// 결재 클릭 시 insert 된다.
+	@PostMapping("/apv_vc_pro")
+	public String apv_vc_insert(Apv_vc_dto board) {
+		service.apv_vc_insert(board);
+		return "home";
+	}
+
 	// 결재대기함에 있는 휴가 신청서를 불러온다.
 	@GetMapping("/apv_vc_list")
 	public String apv_vc_list(Model m, HttpSession session) {
@@ -59,13 +66,6 @@ public class GroupwareController {
 		return "Apv_vc_detail";
 	}
 
-	// 결재 클릭 시 insert 된다.
-	@PostMapping("/apv_vc_pro")
-	public String apv_vc_insert(Apv_vc_dto board) {
-		service.apv_vc_insert(board);
-		return "home";
-	}
-
 	// 시간외근무 신청서를 불러온다.
 	@GetMapping("/apv_over_form")
 	public String over_form(Model m) {
@@ -75,8 +75,10 @@ public class GroupwareController {
 
 	// 결재대기함에 시간외근무 신청서를 불러온다.
 	@GetMapping("/apv_over_list")
-	public String over_list(Model m) {
+	public String over_list(Model m, HttpSession session) {
 		Apv_over_dto board = new Apv_over_dto();
+		// String mem_no = (String)session.getAttribute("mem_no");
+		board.setMem_no("1");
 		m.addAttribute("over1", service.apv_over_list(board));
 		return "Apv_over_list";
 	}
@@ -86,6 +88,13 @@ public class GroupwareController {
 	public String over_detail(Apv_over_dto board, Model m) {
 		m.addAttribute("over2", service.apv_over_detail(board));
 		return "Apv_over_detail";
+	}
+
+	// 결재 클릭 시 insert 된다.
+	@PostMapping("/apv_over_pro")
+	public String apv_over_insert(Apv_over_dto board) {
+		service.apv_over_insert(board);
+		return "home";
 	}
 
 }

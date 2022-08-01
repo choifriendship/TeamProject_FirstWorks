@@ -13,7 +13,7 @@ public class CommonExceptionAdvice {
 	@ExceptionHandler(Exception.class)
 	public String except(Exception ex, Model m) {
 		m.addAttribute("exception", ex);
-		return "error_page";
+		return "Error_page";
 
 	}
 }

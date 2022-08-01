@@ -154,7 +154,7 @@ footer{
   </style>
 </head>
 <body>
-  <form action="/vcpro" method="post">
+  <form action="/apv_vc_pro" method="post">
   <div id="super">
     <!-- 컨테이너 -->
     <div id="container">
