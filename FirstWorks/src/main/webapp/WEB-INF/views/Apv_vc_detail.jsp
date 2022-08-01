@@ -151,7 +151,7 @@ footer{
   </style>
 </head>
 <body>
-  <form action="/vcpro" method="post">
+  <form action="/apv_vc_pro" method="post">
   <div id="super">
     <!-- 컨테이너 -->
     <div id="container">
@@ -183,7 +183,7 @@ footer{
       <!-- 어사이드 -->
       <aside>
         <div id="date">
-          <p id="date1">휴가날짜:<span id="datein">${list2.apv_vc_str_dt }</span> 부터 <span id="datein">${list2.apv_vc_end_dt }</span> 까지</p>
+          <p id="date1">휴가날짜:<span id="datein">${list1.apv_vc_str_dt }</span> 부터 <span id="datein">${list1.apv_vc_end_dt }</span> 까지</p>
         </div>
         <div id="no">
           <div id="left" class="aa">
@@ -217,7 +217,6 @@ footer{
   <input type="submit" value="결재">
 </form>
 <script>
-	alert(${list1.apv_vc_tit });
 </script>
 </body>
 </html>

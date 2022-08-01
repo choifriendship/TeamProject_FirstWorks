@@ -9,7 +9,7 @@
 </head>
 <body> 
 <c:forEach var="Apv_cf_wait" items="${list1 }">     
-	<a href="/cfdetail?apv_no=${Apv_cf_wait.apv_no }">${Apv_cf_wait.apv_vc_tit }</a><br>
+	<a href="/cfdetail?apv_vc_no=${Apv_cf_wait.apv_vc_no }">${Apv_cf_wait.apv_vc_tit }</a><br>
 </c:forEach>
 </body>
 </html>
