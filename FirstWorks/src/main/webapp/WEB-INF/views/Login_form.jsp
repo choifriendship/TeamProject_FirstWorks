@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/loginpro" method="post">
+<form action="/Login_pro" method="post">
 	사원번호 : <input type="number" name="mem_no" required="required"><br>
 	<input type="submit" value="로그인">
 </form>

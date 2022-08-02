@@ -3,9 +3,11 @@ package com.groupware.service;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.groupware.mapper.MemberMapper;
 
+@Service
 public class LoginServiceImpl implements LoginService {
 	@Autowired
 	MemberMapper mapper;

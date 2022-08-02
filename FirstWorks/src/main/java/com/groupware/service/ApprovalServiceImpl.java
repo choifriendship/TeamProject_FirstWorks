@@ -81,7 +81,7 @@ public class ApprovalServiceImpl implements ApprovalService {
 	public void apv_vc_insert(Apv_vc_dto vc, HttpSession session) {
 		int mem_no = (Integer) session.getAttribute("mem_no");
 		vc.setMem_no(mem_no);
-		mapper.apv_vc_insert(vc, session);
+		mapper.apv_vc_insert(vc);
 	}
 
 //	중간결재자가 휴가신청 할때 승인문서작성문
@@ -128,7 +128,7 @@ public class ApprovalServiceImpl implements ApprovalService {
 		mapper.apv_rjt_update(vc);
 		mapper.apv_rjt_copy(vc);
 		mapper.apv_rjt_del(vc);
-		mapper.apv_wait_del(vc.getApv_vc_no());
+		mapper.apv_wait_del(vc.getApv_no());
 	}
 
 //	반려리스트

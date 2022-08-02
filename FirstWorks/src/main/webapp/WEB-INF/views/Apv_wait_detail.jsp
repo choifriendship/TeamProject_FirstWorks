@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,30 +44,30 @@
 <body>
 	<h1>휴가결재서</h1>
 	<h4>사원</h4>
-		<c:if test="${list.one_stamp!=null }">
-			<p>${list.one_stamp }</p>
+		<c:if test="${list.mem_stamp_one != null }">
+			<p>${list.mem_stamp_one }</p>
 		</c:if> 
 	<h4>중간관리자</h4>
-		<c:if test="${list.two_stamp!=null }">
-			<p>${list.two_stamp }</p>
+		<c:if test="${list.mem_stamp_two != null }">
+			<p>${list.mem_stamp_two }</p>
 		</c:if> 
 	<h4>최종관리자</h4>
-		<c:if test="${list.three_stamp!=null }">
-			<p>${list.three_stamp }</p>
+		<c:if test="${list.mem_stamp_three != null }">
+			<p>${list.mem_stamp_three }</p>
 		</c:if> 
 	<h1>결재내용</h1>
-	<p>${list.text }</p>
-	<c:if test="${lev==2 }">
+	<p>${list.apv_vc_txt }</p>
+	<c:if test="${rank_no == 2 }">
 		<form action="/twocf" method="post">
 			<input type="submit" value="결재">
-			<input type="hidden" value="${list.no }" name="no"> 
+			<input type="hidden" value="${list.apv_no }" name="apv_no"> 
 			<input type="button" id="modal" onclick="aaa()" value="반려"></input>			
 		</form>
 	</c:if>
 	<c:if test="${lev==3 }">
 		<form action="/threecf" method="post">
 			<input type="submit" value="결재">
-			<input type="hidden" value="${list.no }" name="no"> 
+			<input type="hidden" value="${list.apv_no }" name="apv_no"> 
 			<input type="button" id="modal" onclick="aaa()" value="반려"></input>			
 		</form>
 	</c:if>	  
@@ -82,7 +83,7 @@
                 <div id="b1">
                     <input type="submit" value="반려">
                     <input type="button" value="접기" onclick="bbb()">
-                    <input type="hidden" value="${list.no }" name="no"> 
+                    <input type="hidden" value="${list.apv_no }" name="apv_no"> 
                     <input type="hidden" value="${mem_no}" name="one_no">                   
                 </div>
             </form>
