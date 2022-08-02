@@ -18,68 +18,68 @@ public class ApprovalServiceImpl implements ApprovalService {
 	ApprovalMapper mapper;
 
 //	멤버 레벨 가져오기
-	public int getrank(HttpSession session) {
+	public int get_mem_rank(HttpSession session) {
 		int mem_no = (Integer) session.getAttribute("mem_no");
-		return mapper.getrank(mem_no);
+		return mapper.get_mem_rank(mem_no);
 	}
 
 //	대기테이블 첫번째
-	public List<Apv_wait_dto> waitlist(HttpSession session) {
+	public List<Apv_wait_dto> apv_wait_list(HttpSession session) {
 		int mem_no = (Integer) session.getAttribute("mem_no");
-		return mapper.waitlist(mem_no);
+		return mapper.apv_wait_list(mem_no);
 	}
 
 //	대기테이블 두번째
-	public List<Apv_wait_dto> waitlist1(HttpSession session) {
+	public List<Apv_wait_dto> apv_wait_list1(HttpSession session) {
 		int mem_no = (Integer) session.getAttribute("mem_no");
-		return mapper.waitlist(mem_no);
+		return mapper.apv_wait_list1(mem_no);
 	}
 
 //	대기테이블 세번째
-	public List<Apv_wait_dto> waitlist2(HttpSession session) {
+	public List<Apv_wait_dto> apv_wait_list2(HttpSession session) {
 		int mem_no = (Integer) session.getAttribute("mem_no");
-		return mapper.waitlist(mem_no);
+		return mapper.apv_wait_list2(mem_no);
 	}
 
 //	대기테이블에서 휴가 상세보기 가져오기
-	public Apv_vc_dto waitlistdetail(int apv_no) {
-		return mapper.waitlistdetail(apv_no);
+	public Apv_vc_dto apv_wait_detail(int apv_no) {
+		return mapper.apv_wait_detail(apv_no);
 	}
 
 //	대기테이블에 중간결재자 업데이트
 //	휴가테이블에 중간결재자 업데이트(휴가 본문에 도장 업데이트문)
-	public void midcf(HttpSession session, int apv_no) {
+	public void apv_update1(HttpSession session, int apv_no) {
 		int mem_no = (Integer) session.getAttribute("mem_no");
-		mapper.midcf(mem_no, apv_no);
-		mapper.midcf1(mem_no, apv_no);
+		mapper.apv_wait_update1(mem_no, apv_no);
+		mapper.apv_vc_update1(mem_no, apv_no);
 	}
 
 //	대기테이블에 최종결재자 업데이트(승인테이블에 승인란(cf)에 1로 업데이트)
 //	휴가테이블에 최종결재자 업데이트(휴가본문에 도장 업데이트문)
 //	최종결재자 결재완료 승인테이블에 승인확인란(cf)에 1을 넣어서 승인완료처리 (0은 결재대기)
 //	대기테이블에서 삭제(완료테이블로 가기 위해)
-	public void fnlcf(HttpSession session, int apv_no) {
+	public void apv_update2(HttpSession session, int apv_no) {
 		int mem_no = (Integer) session.getAttribute("mem_no");
-		mapper.fnlcf(mem_no, apv_no);
-		mapper.fnlcf1(mem_no, apv_no);
-		mapper.fnlcf2(apv_no);
-		mapper.waitdel(apv_no);
+		mapper.apv_wait_update2(mem_no, apv_no);
+		mapper.apv_vc_update2(mem_no, apv_no);
+		mapper.apv_cf(apv_no);
+		mapper.apv_wait_del(apv_no);
 	}
 
 //	결재완료된것들 리스트 페이지 불러오기(자기가 결재한 문서들만)
-	public List<Apv_dto> cflist(HttpSession session) {
+	public List<Apv_dto> apv_cf_list(HttpSession session) {
 		int mem_no = (Integer) session.getAttribute("mem_no");
-		return mapper.cflist(mem_no);
+		return mapper.apv_cf_list(mem_no);
 	}
 
 //	결재완료된것들 리스트 전체 불러오기
-	public List<Apv_dto> cflistall() {
-		return mapper.cflistall();
+	public List<Apv_dto> apv_cf_list_all() {
+		return mapper.apv_cf_list_all();
 	}
 
 //	결재완료된 것을 리스트 상세 불러오기
 	public Apv_vc_dto apv_cf_detail(int apv_no) {
-		return mapper.cf_list_detail(apv_no);
+		return mapper.apv_cf_detail(apv_no);
 
 	}
 
@@ -112,39 +112,39 @@ public class ApprovalServiceImpl implements ApprovalService {
 	}
 
 //  LEVEL1의 결재대기문서 숫자
-	public int waitcnt(int mem_no) {
-		return mapper.waitcnt(mem_no);
+	public int apv_wait_cnt(int mem_no) {
+		return mapper.apv_wait_cnt(mem_no);
 	}
 
 //  LEVEL2의 결재대기문서 숫자
-	public int waitcnt1(int mem_no) {
-		return mapper.waitcnt1(mem_no);
+	public int apv_wait_cnt1(int mem_no) {
+		return mapper.apv_wait_cnt1(mem_no);
 	}
 
 //  LEVEL3의 결재대기문서 숫자
-	public int waitcnt2(int mem_no) {
-		return mapper.waitcnt2(mem_no);
+	public int apv_wait_cnt2(int mem_no) {
+		return mapper.apv_wait_cnt2(mem_no);
 	}
 
 //  반려시 반려사유 업데이트문
 //	휴가본문테이블에 있는 데이터가 반려테이블로 복사 (1)
 //	반려가 됐을 시 휴가본문테이블에서 삭제 (2)
 //	대기테이블에서 삭제(완료테이블로 가기 위해)
-	public void rjt(Apv_vc_dto vc) {
-		mapper.rjtupdate(vc);
-		mapper.rjtcopy(vc);
-		mapper.rjtdel(vc);
-		mapper.waitdel(vc.getApv_vc_no());
+	public void apv_rjt(Apv_vc_dto vc) {
+		mapper.apv_rjt_update(vc);
+		mapper.apv_rjt_copy(vc);
+		mapper.apv_rjt_del(vc);
+		mapper.apv_wait_del(vc.getApv_vc_no());
 	}
 
 //	반려리스트
-	public List<Apv_wait_dto> rjtlist(HttpSession session) {
-		return mapper.rjtlist((Integer) session.getAttribute("mem_no"));
+	public List<Apv_wait_dto> apv_rjt_list(HttpSession session) {
+		return mapper.apv_rjt_list((Integer) session.getAttribute("mem_no"));
 	}
 
 //	반려테이블 디테일
-	public Apv_vc_dto rjtdetail(int apv_no) {
-		return mapper.rjtdetail(apv_no);
+	public Apv_vc_dto apv_rjt_detail(int apv_no) {
+		return mapper.apv_rjt_detail(apv_no);
 	}
 
 }

@@ -18,65 +18,66 @@ public interface ApprovalMapper {
 
 //	멤버 레벨 가져오기
 	@Select("select rank_no from mem_tb where mem_no=#{mem_no}")
-	public int getrank(int mem_no);
+	public int get_mem_rank(int mem_no);
 
-//	대기테이블 첫번째
+//	대기테이블 리스트 첫번째
 	@Select("select * from apv_vc_tb a, apv_wait_eml_tb b" + "where a.apv_no = b.apv_no "
 			+ "and b.apv_str_cf = #{mem_no} " + "order by a.apv_no desc")
-	public List<Apv_wait_dto> waitlist(int mem_no);
+	public List<Apv_wait_dto> apv_wait_list(int mem_no);
 
-//	대기테이블 두번째
+//	대기테이블 리스트 두번째
 	@Select("select * from apv_vc_tb a, apv_wait_eml_tb b" + "where a.apv_no = b.apv_no"
 			+ "and b.apv_mid_cf = #{mem_no}" + "order by a.apv_no desc")
-	public List<Apv_wait_dto> waitlist1(int mem_no);
+	public List<Apv_wait_dto> apv_wait_list1(int mem_no);
 
-//	대기테이블 세번째
+//	대기테이블 리스트 세번째
 	@Select("select * from apv_vc_tb a, apv_wait_eml_tb b" + "where a.apv_no = b.apv_no"
 			+ "and b.apv_fnl_cf = #{mem_no}" + "order by a.apv_no desc")
-	public List<Apv_wait_dto> waitlist2(int mem_no);
+	public List<Apv_wait_dto> apv_wait_list2(int mem_no);
 
 //	대기테이블에서 휴가 상세보기 가져오기
 	@Select("select * from apv_vc_tb where apv_no=#{apv_no}")
-	public Apv_vc_dto waitlistdetail(int apv_no);
+	public Apv_vc_dto apv_wait_detail(int apv_no);
 
 //	대기테이블에 중간결재자 업데이트
 	@Update("update apv_wait_eml_tb set apv_mid_cf = #{mem_no} where apv_no=#{apv_no}")
-	public void midcf(@Param("mem_no") int mem_no, @Param("apv_no") int apv_no);
+	public void apv_wait_update1(@Param("mem_no") int mem_no, @Param("apv_no") int apv_no);
 
 //	휴가테이블에 중간결재자 업데이트(휴가 본문에 도장 업데이트문)
 	@Update("update apv_vc_tb set mem_stamp_two = (select mem_stamp from mem_tb where mem_no = #{mem_no}) where apv_no = #{apv_no}")
-	public void midcf1(@Param("mem_no") int mem_no, @Param("apv_no") int apv_no);
+	public void apv_vc_update1(@Param("mem_no") int mem_no, @Param("apv_no") int apv_no);
 
 // 	대기테이블에 최종결재자 업데이트(승인테이블에 승인란(cf)에 1로 업데이트)
 	@Update("update apv_wait_eml_tb set apv_fnl_cf = #{mem_no} where apv_no = #{apv_no}")
-	public void fnlcf(@Param("mem_no") int mem_no, @Param("apv_no") int apv_no);
+	public void apv_wait_update2(@Param("mem_no") int mem_no, @Param("apv_no") int apv_no);
 
 //	휴가테이블에 최종결재자 업데이트(휴가본문에 도장 업데이트문)
 	@Update("update apv_vc_tb set mem_stamp_three = (select mem_stamp from mem where mem_no = #{mem_no}) where apv_no = #{apv_no}")
-	public void fnlcf1(@Param("mem_no") int mem_no, @Param("apv_no") int apv_no);
+	public void apv_vc_update2(@Param("mem_no") int mem_no, @Param("apv_no") int apv_no);
 
-//	최종결재자 결재완료 승인테이블에 승인확인란(cf)에 1을 넣어서 승인완료처리 (0은 결재대기)
+// ????????????????????????
+//	승인테이블에 최종결재자 결재완료 승인확인란(cf)에 1을 넣어서 승인완료처리 (0은 결재대기)
 	@Update("update apv_tb set apv_cf_no = 1 where apv_no = #{apv_no}")
-	public void fnlcf2(int apv_no);
+	public void apv_cf(int apv_no);
 
 //	대기테이블에서 삭제(완료테이블로 가기 위해)
 	@Delete("delete from apv_wait_eml_tb where apv_no = #{apv_no}")
-	public void waitdel(int apv_no);
+	public void apv_wait_del(int apv_no);
 
 //	결재완료된것들 리스트 페이지 불러오기(자기가 결재한 문서들만)
 	@Select("select * from apv_tb a, apv_vc_tb b " + "where a.apv_no=b.apv_no " + "and a.apv_cf_no = 1"
 			+ "and (a.mem_no = #{mem_no}" + "or a.apv_mid_cf = #{mem_no}" + "or apv_fnl_cf = #{mem_no})"
 			+ "order by b.apv_no desc")
-	public List<Apv_dto> cflist(int mem_no);
+	public List<Apv_dto> apv_cf_list(int mem_no);
 
 //	결재완료된것들 리스트 전체 불러오기
 	@Select("select * " + "from apv_tb a, apv_vc_tb b" + "" + "where a.apv_no = b.apv_no " + "and a.apv_cf_no = 1 "
 			+ "order by b.apv_no desc")
-	public List<Apv_dto> cflistall();
+	public List<Apv_dto> apv_cf_list_all();
 
 //	결재완료테이블 디테일
 	@Select("select * from apv_tb a, apv_vc_tb b where apv_no = #{apv_no}")
-	public Apv_vc_dto cf_list_detail(int apv_no);
+	public Apv_vc_dto apv_cf_detail(int apv_no);
 
 //	휴가신청서 입력하기 (휴가신청서 테이블, 전자결재 테이블, 결재대기함 동시에 입력)
 	@Insert("insert all into apv_vc_tb values"
@@ -109,39 +110,39 @@ public interface ApprovalMapper {
 //  LEVEL1의 결재대기문서 숫자
 	@Select("select count(apv_wait_eml_tb.apv_no) " + "from apv_vc_tb a, apv_wait_eml_tb b"
 			+ "where a.apv_no = b.apv_no " + "and b.apv_str_cf = #{mem_no}")
-	public int waitcnt(int mem_no);
+	public int apv_wait_cnt(int mem_no);
 
 //  LEVEL2의 결재대기문서 숫자
 	@Select("select count(apv_wait_eml_tb.apv_no) " + "from apv_vc_tb a, apv_wait_eml_tb b "
 			+ "where a.apv_no = b.apv_no " + "and b.apv_mid_cf = 0 " + "and b.apv_mid_cf = #{mem_no}")
-	public int waitcnt1(int mem_no);
+	public int apv_wait_cnt1(int mem_no);
 
 //  LEVEL3의 결재대기문서 숫자
 	@Select("select count(apv_wait_eml_tb.apv_no) " + "from apv_vc_tb a, apv_wait_eml_tb b "
 			+ "where a.apv_no = b.apv_no " + "and b.apv_fnl_cf = 0 " + "and b.apv_mid_cf != 0 "
 			+ "and b.apv_fnl_cf = #{mem_no}")
-	public int waitcnt2(int mem_no);
+	public int apv_wait_cnt2(int mem_no);
 
 //  반려시 반려사유 업데이트문
 	@Update("update apv_vc_tb set apv_vc_rjt = #{apv_vc_rjt} where apv_vc_no = #{apv_vc_no}")
-	public void rjtupdate(Apv_vc_dto vc);
+	public void apv_rjt_update(Apv_vc_dto vc);
 
 //	휴가본문테이블에 있는 데이터가 반려테이블로 복사 (1)
 	@Insert("INSERT INTO apv_rjt_eml_tb SELECT * FROM apv_vc_tb WHERE apv_no = #{apv_no}")
-	public void rjtcopy(Apv_vc_dto vc);
+	public void apv_rjt_copy(Apv_vc_dto vc);
 
 //	반려가 됐을 시 휴가본문테이블에서 삭제 (2)
 	@Delete("delete from apv_vc_tb where apv_no = #{apv_no}")
-	public void rjtdel(Apv_vc_dto vc);
+	public void apv_rjt_del(Apv_vc_dto vc);
 
 //	반려리스트
 	@Select("select * from apv_tb a, apv_rjt_eml_tb b" + "where a.apv_no = b.apv_no" + "and (a.mem_no = #{mem_no} "
 			+ "or a.apv_mid_cf = #{mem_no} " + "or a.apv_fnl_cf = #{mem_no}) " + "order by b.apv_no desc")
-	public List<Apv_wait_dto> rjtlist(Integer mem_no);
+	public List<Apv_wait_dto> apv_rjt_list(Integer mem_no);
 
 //	반려테이블 디테일
 	@Select("select * from apv_rjt_eml_tb where apv_no = #{apv_no}")
-	public Apv_vc_dto rjtdetail(int apv_no);
+	public Apv_vc_dto apv_rjt_detail(int apv_no);
 
 ///////////////////////////////////////////////////////////////////
 

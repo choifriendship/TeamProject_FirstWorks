@@ -39,11 +39,11 @@ public class ApprovalController {
 			m.addAttribute("mem_no", (Integer) session.getAttribute("mem_no"));
 			m.addAttribute("rank_no", (Integer) session.getAttribute("rank_no"));
 			if ((Integer) session.getAttribute("rank_no") == 1) {
-				m.addAttribute("count", service.waitcnt((Integer) session.getAttribute("mem_no")));
+				m.addAttribute("count", service.apv_wait_cnt((Integer) session.getAttribute("mem_no")));
 			} else if ((Integer) session.getAttribute("rank_no") == 2) {
-				m.addAttribute("count", service.waitcnt1((Integer) session.getAttribute("mem_no")));
+				m.addAttribute("count", service.apv_wait_cnt1((Integer) session.getAttribute("mem_no")));
 			} else {
-				m.addAttribute("count", service.waitcnt2((Integer) session.getAttribute("mem_no")));
+				m.addAttribute("count", service.apv_wait_cnt2((Integer) session.getAttribute("mem_no")));
 			}
 		}
 		return "home";
@@ -92,32 +92,32 @@ public class ApprovalController {
 	@GetMapping("/Apv_wait_list")
 	public String Apv_wait_list(HttpSession session, Model m) {
 		if ((Integer) session.getAttribute("rank_no") == 1) {
-			m.addAttribute("list", service.waitlist(session));
+			m.addAttribute("list", service.apv_wait_list(session));
 			m.addAttribute("rank_no", (Integer) session.getAttribute("rank_no"));
 		} else if ((Integer) session.getAttribute("rank_no") == 2) {
-			m.addAttribute("list", service.waitlist1(session));
+			m.addAttribute("list", service.apv_wait_list1(session));
 			m.addAttribute("rank_no", (Integer) session.getAttribute("rank_no"));
 		} else {
-			m.addAttribute("list", service.waitlist2(session));
+			m.addAttribute("list", service.apv_wait_list2(session));
 			m.addAttribute("rank_no", (Integer) session.getAttribute("rank_no"));
 		}
 		return "/Apv_wait_list";
 	}
 
 //	대기테이블에서 휴가 상세보기 가져오기
-	@GetMapping("/Apv_wait_list_detail")
-	public String Apv_wait_list_detail(int apv_no, Model m, HttpSession session) {
+	@GetMapping("/Apv_wait_detail")
+	public String Apv_wait_detail(int apv_no, Model m, HttpSession session) {
 		m.addAttribute("rank_no", (Integer) session.getAttribute("rank_no"));
 		m.addAttribute("mem_no", (Integer) session.getAttribute("mem_no"));
-		m.addAttribute("list", service.Apv_wait_list_detail(apv_no));
+		m.addAttribute("list", service.apv_wait_detail(apv_no));
 		return "/Apv_wait_list_detail";
 	}
 
 //	대기테이블에 중간결재자 업데이트
 //	휴가테이블에 중간결재자 업데이트(휴가 본문에 도장 업데이트문)
-	@PostMapping("/midcf")
+	@PostMapping("/Apv_update1")
 	public String midcf(HttpSession session, int apv_no) {
-		service.midcf(session, apv_no);
+		service.apv_update1(session, apv_no);
 		return "redirect:/Apv_wait_list";
 	}
 
@@ -125,52 +125,52 @@ public class ApprovalController {
 //	휴가테이블에 최종결재자 업데이트(휴가본문에 도장 업데이트문)
 //	최종결재자 결재완료 승인테이블에 승인확인란(cf)에 1을 넣어서 승인완료처리 (0은 결재대기)
 //	대기테이블에서 삭제(완료테이블로 가기 위해)
-	@PostMapping("/fnlcf")
+	@PostMapping("/Apv_update2")
 	public String threecf(HttpSession session, int apv_no) {
-		service.fnlcf(session, apv_no);
+		service.apv_update2(session, apv_no);
 		return "redirect:/Apv_wait_list";
 	}
 
 //	결재완료된것들 리스트 페이지 불러오기(자기가 결재한 문서들만)
-	@GetMapping("/cflist")
+	@GetMapping("/Apv_cf_list")
 	public String cflist(HttpSession session, Model m) {
-		m.addAttribute("list", service.cflist(session));
-		return "cflist";
+		m.addAttribute("list", service.apv_cf_list(session));
+		return "Apv_cf_list";
 	}
 
 //	결재완료된것들 리스트 전체 불러오기
-	@GetMapping("/cflistall")
+	@GetMapping("/apv_cf_list_all")
 	public String cflistall(Model m) {
-		m.addAttribute("list", service.cflistall());
-		return "cflistall";
+		m.addAttribute("list", service.apv_cf_list_all());
+		return "Apv_cf_list_all";
 	}
 
 //	결재완료된것들 리스트 상세 불러오기
-	@GetMapping("/cfdetail")
-	public String cfdetail(int apv_no, Model m) {
-		m.addAttribute("list", service.cf_list_detail(apv_no));
-		return "cfdetail";
+	@GetMapping("/Apv_cf_detail")
+	public String apv_cf_detail(int apv_no, Model m) {
+		m.addAttribute("list", service.apv_cf_detail(apv_no));
+		return "Apv_cf_detail";
 	}
 
 //	반려처리함 리스트 페이지 불러오기
-	@GetMapping("/rjt")
+	@GetMapping("/Apv_rjt")
 	public String rjt(Apv_vc_dto vc) {
-		service.rjt(vc);
-		return "redirect:/watinglist";
+		service.apv_rjt(vc);
+		return "redirect:/apv_wait_list";
 	}
 
 //	반려처리함 리스트 전체 불러오기
-	@GetMapping("/rjtlist")
-	public String rejlist(HttpSession session, Model m) {
-		m.addAttribute("list", service.rjtlist(session));
-		return "rjtlist";
+	@GetMapping("/Apv_rjt_list")
+	public String apv_rjt_list(HttpSession session, Model m) {
+		m.addAttribute("list", service.apv_rjt_list(session));
+		return "Apv_rjt_list";
 	}
 
 //	반려처리함 리스트 상세 불러오기
-	@GetMapping("/rjtdetail")
-	public String rejdetail(int apv_no, Model m) {
-		m.addAttribute("list", service.rjtdetail(apv_no));
-		return "/rjtdetail";
+	@GetMapping("/Apv_rjt_detail")
+	public String apv_rjt_detail(int apv_no, Model m) {
+		m.addAttribute("list", service.apv_rjt_detail(apv_no));
+		return "/Apv_rjt_detail";
 	}
 
 }
