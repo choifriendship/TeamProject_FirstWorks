@@ -2,18 +2,18 @@ package com.groupware.service;
 
 import java.util.List;
 
-import com.groupware.dto.BoardVO;
+import com.groupware.dto.Board_dto;
 
 public interface BoardService {
 
-	public void register(BoardVO board);
+	public void register(Board_dto board);
 
-	public BoardVO get(Long bno);
+	public Board_dto get(Long bno);
 
-	public boolean modify(BoardVO board);
+	public boolean modify(Board_dto board);
 
 	public boolean remove(Long bno);
 
-	public List<BoardVO> getList();
+	public List<Board_dto> getList();
 
 }

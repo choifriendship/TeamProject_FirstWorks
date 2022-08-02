@@ -2,24 +2,19 @@ package com.groupware.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Select;
-
-import com.groupware.dto.BoardVO;
+import com.groupware.dto.Board_dto;
 
 public interface BoardMapper {
 
-	@Select
-	("select * from tbl_board where bno > 0")
-	
-	public List<BoardVO> getList();
+	public List<Board_dto> getList();
 
-	public void insert(BoardVO board);
+	public void insert(Board_dto board);
 
-	public void insertSelectKey(BoardVO board);
+	public void insertSelectKey(Board_dto board);
 
-	public BoardVO read(Long bno);
+	public Board_dto read(Long bno);
 
 	public int delete(Long bno);
 
-	public int update(BoardVO board);
+	public int update(Board_dto board);
 }

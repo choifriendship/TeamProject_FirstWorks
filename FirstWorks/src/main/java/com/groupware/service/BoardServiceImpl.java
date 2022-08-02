@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.groupware.dto.BoardVO;
+import com.groupware.dto.Board_dto;
 import com.groupware.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ public class BoardServiceImpl implements BoardService {
 	private BoardMapper mapper;
 
 	@Override
-	public void register(BoardVO board) {
+	public void register(Board_dto board) {
 
 		log.info("register......" + board);
 
@@ -31,7 +31,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public BoardVO get(Long bno) {
+	public Board_dto get(Long bno) {
 
 		log.info("get......" + bno);
 
@@ -39,7 +39,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public boolean modify(BoardVO board) {
+	public boolean modify(Board_dto board) {
 
 		log.info("modify......" + board);
 
@@ -55,7 +55,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVO> getList() {
+	public List<Board_dto> getList() {
 
 		log.info("getList..........");
 
