@@ -6,7 +6,8 @@ import lombok.Data;
 
 @Data
 public class Mem_dto {
-	private String mem_no;
+
+	private int mem_no;
 	private int dept_no;
 	private String mem_id;
 	private String mem_pw;

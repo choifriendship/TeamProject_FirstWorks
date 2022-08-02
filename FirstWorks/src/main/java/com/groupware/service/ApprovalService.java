@@ -10,9 +10,6 @@ import com.groupware.dto.Apv_wait_dto;
 
 public interface ApprovalService {
 
-//	멤버 레벨 가져오기
-	public int get_mem_rank(HttpSession session);
-
 //	대기테이블 첫번째
 	public List<Apv_wait_dto> apv_wait_list(HttpSession session);
 

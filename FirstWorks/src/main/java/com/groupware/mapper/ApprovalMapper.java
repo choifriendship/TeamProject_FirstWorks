@@ -16,10 +16,6 @@ import com.groupware.dto.Apv_wait_dto;
 
 public interface ApprovalMapper {
 
-//	멤버 레벨 가져오기
-	@Select("select rank_no from mem_tb where mem_no=#{mem_no}")
-	public int get_mem_rank(int mem_no);
-
 //	대기테이블 리스트 첫번째
 	@Select("select * from apv_vc_tb a, apv_wait_eml_tb b" + "where a.apv_no = b.apv_no "
 			+ "and b.apv_str_cf = #{mem_no} " + "order by a.apv_no desc")

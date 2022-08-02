@@ -2,14 +2,16 @@ package com.groupware.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+@Controller
 public class LoginController {
 
-	@GetMapping("/login")
+	@GetMapping("/Login_form")
 	public String login() {
-		return "loginform";
+		return "Login_form";
 	}
 
 	@GetMapping("/logout")

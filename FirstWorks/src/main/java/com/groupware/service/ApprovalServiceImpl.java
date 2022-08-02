@@ -17,12 +17,6 @@ public class ApprovalServiceImpl implements ApprovalService {
 	@Autowired
 	ApprovalMapper mapper;
 
-//	멤버 레벨 가져오기
-	public int get_mem_rank(HttpSession session) {
-		int mem_no = (Integer) session.getAttribute("mem_no");
-		return mapper.get_mem_rank(mem_no);
-	}
-
 //	대기테이블 첫번째
 	public List<Apv_wait_dto> apv_wait_list(HttpSession session) {
 		int mem_no = (Integer) session.getAttribute("mem_no");

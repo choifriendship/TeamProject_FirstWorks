@@ -20,8 +20,8 @@
 
 <P>  The time on the server is </P>
 <c:if test="${mem_no==null }">
-	<h4><a href="/login">로그인</a></h4>
-	<h4><a href="/mem_form">멤버가입</a></h4>
+	<h4><a href="/Login_form">로그인</a></h4>
+	<h4><a href="/Mem_form">멤버가입</a></h4>
 </c:if>
 <c:if test="${mem_no != null }">
 	<c:if test="${lev==1 }">
