@@ -20,11 +20,11 @@ public interface ApprovalMapper {
 	public List<Apv_wait_dto> apv_wait_list(int mem_no);
 
 //	대기테이블 리스트 두번째
-	@Select("select * from apv_vc_tb a, apv_wait_tb b where a.apv_no = b.apv_no and b.apv_mid_cf = #{mem_no} order by a.apv_no desc")
+	@Select("select * from apv_vc_tb a, apv_wait_tb b where a.apv_no = b.apv_no and b.apv_line_two = #{mem_no} order by a.apv_no desc")
 	public List<Apv_wait_dto> apv_wait_list1(int mem_no);
 
 //	대기테이블 리스트 세번째
-	@Select("select * from apv_vc_tb a, apv_wait_tb b" + "where a.apv_no = b.apv_no" + "and b.apv_fnl_cf = #{mem_no}"
+	@Select("select * from apv_vc_tb a, apv_wait_tb b where a.apv_no = b.apv_no and b.apv_line_three = #{mem_no}"
 			+ "order by a.apv_no desc")
 	public List<Apv_wait_dto> apv_wait_list2(int mem_no);
 
@@ -33,20 +33,20 @@ public interface ApprovalMapper {
 	public Apv_vc_dto apv_wait_detail(int apv_no);
 
 //	대기테이블에 중간결재자 업데이트
-	@Update("update apv_wait_tb set apv_mid_cf = #{mem_no} where apv_no=#{apv_no}")
-	public void apv_wait_update1(@Param("mem_no") int mem_no, @Param("apv_no") int apv_no);
+	@Update("update apv_wait_tb set apv_mid_cf = #{apv_line_two} where apv_no=#{apv_no}")
+	public void apv_wait_update1(@Param("apv_line_two") int apv_line_two, @Param("apv_no") int apv_no);
 
 //	휴가테이블에 중간결재자 업데이트(휴가 본문에 도장 업데이트문)
-	@Update("update apv_vc_tb set mem_stamp_two = (select mem_stamp from mem_tb where mem_no = #{mem_no}) where apv_no = #{apv_no}")
-	public void apv_vc_update1(@Param("mem_no") int mem_no, @Param("apv_no") int apv_no);
+	@Update("update apv_vc_tb set mem_stamp_two = (select mem_stamp from mem_tb where mem_no = #{apv_line_two}) where apv_no = #{apv_no}")
+	public void apv_vc_update1(@Param("apv_line_two") int apv_line_two, @Param("apv_no") int apv_no);
 
 // 	대기테이블에 최종결재자 업데이트(승인테이블에 승인란(cf)에 1로 업데이트)
-	@Update("update apv_wait_tb set apv_fnl_cf = #{mem_no} where apv_no = #{apv_no}")
-	public void apv_wait_update2(@Param("mem_no") int mem_no, @Param("apv_no") int apv_no);
+	@Update("update apv_wait_tb set apv_fnl_cf = #{apv_line_three} where apv_no = #{apv_no}")
+	public void apv_wait_update2(@Param("apv_line_three") int apv_line_three, @Param("apv_no") int apv_no);
 
 //	휴가테이블에 최종결재자 업데이트(휴가본문에 도장 업데이트문)
-	@Update("update apv_vc_tb set mem_stamp_three = (select mem_stamp from mem where mem_no = #{mem_no}) where apv_no = #{apv_no}")
-	public void apv_vc_update2(@Param("mem_no") int mem_no, @Param("apv_no") int apv_no);
+	@Update("update apv_vc_tb set mem_stamp_three = (select mem_stamp from mem_tb where mem_no = #{apv_line_three}) where apv_no = #{apv_no}")
+	public void apv_vc_update2(@Param("apv_line_three") int apv_line_three, @Param("apv_no") int apv_no);
 
 //	승인테이블에 최종결재자 결재완료 승인확인란(cf)에 1을 넣어서 승인완료처리 (0은 결재대기)
 	@Update("update apv_tb set apv_cf_no = 1 where apv_no = #{apv_no}")
@@ -58,7 +58,7 @@ public interface ApprovalMapper {
 
 //	결재완료된것들 리스트 페이지 불러오기(자기가 결재한 문서들만)
 	@Select("select * from apv_tb a, apv_vc_tb b " + "where a.apv_no=b.apv_no " + "and a.apv_cf_no = 1"
-			+ "and (a.mem_no = #{mem_no}" + "or a.apv_mid_cf = #{mem_no}" + "or apv_fnl_cf = #{mem_no})"
+			+ "and (a.apv_line_one = #{mem_no}" + "or a.apv_line_two = #{mem_no}" + "or apv_line_three = #{mem_no})"
 			+ "order by b.apv_no desc")
 	public List<Apv_dto> apv_cf_list(int mem_no);
 
@@ -106,12 +106,12 @@ public interface ApprovalMapper {
 
 //  LEVEL2의 결재대기문서 숫자
 	@Select("select count(b.apv_no) from apv_vc_tb a, apv_wait_tb b where a.apv_no = b.apv_no "
-			+ "and b.apv_mid_cf = 0 " + "and b.apv_mid_cf = #{mem_no}")
+			+ "and b.apv_mid_cf = 0 " + "and b.apv_line_two = #{mem_no}")
 	public int apv_wait_cnt1(int mem_no);
 
 //  LEVEL3의 결재대기문서 숫자
 	@Select("select count(b.apv_no) " + "from apv_vc_tb a, apv_wait_tb b " + "where a.apv_no = b.apv_no "
-			+ "and b.apv_fnl_cf = 0 " + "and b.apv_mid_cf != 0 " + "and b.apv_fnl_cf = #{mem_no}")
+			+ "and b.apv_fnl_cf = 0 " + "and b.apv_mid_cf != 0 " + "and b.apv_line_three = #{mem_no}")
 	public int apv_wait_cnt2(int mem_no);
 
 //  반려시 반려사유 업데이트문
@@ -119,7 +119,7 @@ public interface ApprovalMapper {
 	public void apv_rjt_update(Apv_vc_dto vc);
 
 //	휴가본문테이블에 있는 데이터가 반려테이블로 복사 (1)
-	@Insert("insert into apv_rjt_eml_tb select * from apv_vc_tb wheres apv_no = #{apv_no}")
+	@Insert("insert into apv_rjt_tb select * from apv_vc_tb wheres apv_no = #{apv_no}")
 	public void apv_rjt_copy(Apv_vc_dto vc);
 
 //	반려가 됐을 시 휴가본문테이블에서 삭제 (2)
@@ -127,12 +127,12 @@ public interface ApprovalMapper {
 	public void apv_rjt_del(Apv_vc_dto vc);
 
 //	반려리스트
-	@Select("select * from apv_tb a, apv_rjt_eml_tb b" + "where a.apv_no = b.apv_no" + "and (a.mem_no = #{mem_no} "
-			+ "or a.apv_mid_cf = #{mem_no} " + "or a.apv_fnl_cf = #{mem_no}) " + "order by b.apv_no desc")
+	@Select("select * from apv_tb a, apv_rjt_tb b where a.apv_no = b.apv_no and (a.mem_no = #{mem_no} "
+			+ "or a.apv_line_two = #{mem_no} " + "or a.apv_line_three = #{mem_no}) " + "order by b.apv_no desc")
 	public List<Apv_wait_dto> apv_rjt_list(Integer mem_no);
 
 //	반려테이블 디테일
-	@Select("select * from apv_rjt_eml_tb where apv_no = #{apv_no}")
+	@Select("select * from apv_rjt_tb where apv_no = #{apv_no}")
 	public Apv_vc_dto apv_rjt_detail(int apv_no);
 
 }
