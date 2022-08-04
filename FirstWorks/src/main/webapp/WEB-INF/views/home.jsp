@@ -18,6 +18,7 @@
 	Hello world!  
 </h1>
 
+<<<<<<< HEAD
 <P>  The time on the server is </P>
 <c:if test="${mem_no==null }">
 	<h4><a href="/Login_form">로그인</a></h4>
@@ -41,5 +42,12 @@
 </c:if>
 <%-- <h4>레벨:${lev }</h4>
 <h4>카운트:${count }</h4> --%>
+=======
+<P>  The time on the server is ${serverTime}. </P>
+<a href="/apv_vc_form">vcform</a><br>
+<a href="/apv_vc_list">cfwatinglist</a><br>
+<a href="/apv_vc_form">vcform</a><br>
+
+>>>>>>> refs/remotes/origin/developer
 </body>
 </html>
