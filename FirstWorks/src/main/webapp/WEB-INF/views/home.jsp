@@ -36,6 +36,7 @@
 	<h4><a href="/Apv_wait_list">결재대기함</a><c:if test="${count!=0}"><span id="c">${count }</span></c:if></h4>	
 	<h4><a href="/Apv_cf_list">결재완료함</a></h4>
 	<h4><a href="/Apv_rjt_list">반려함</a></h4>
+	<h4><a href="/Calendar_form">캘린더</a></h4>
 	<h4><a href="/Logout">로그아웃</a></h4>
 </c:if>
 <%-- <h4>레벨:${lev }</h4>
