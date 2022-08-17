@@ -6,8 +6,11 @@
 	<settings>
 	 <setting name="jdbcTypeForNull" value="VARCHAR"/> 
 	</settings>
-	<!-- <typeAliases>
-		<typeAlias type="com.test.spring.LikeHateVO" alias="likehatevo"/>
-	</typeAliases> -->
+	<typeAliases>
+		<typeAlias type="com.groupware.dto.Apv_vc_dto" alias="Apv_vc_dto"/>
+	</typeAliases> 
+	<mappers>
+		<mapper resource="/com/groupware/mapper/Boardmapper.xml"/> 
+	</mappers>
 	
 </configuration>

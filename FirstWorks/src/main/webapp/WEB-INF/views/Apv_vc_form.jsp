@@ -1,14 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%> 	
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
   <title>Document</title>
-  <!-- <link rel="stylesheet" href="css/style.css"> -->  
+<!-- 이모티콘 -->
+<script src="https://kit.fontawesome.com/616f27e0c4.js" crossorigin="anonymous"></script>
+
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/header.css" /><!-- header css -->
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/aside.css" /><!-- main css -->
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/basic.css" /><!-- basic css -->
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/css/main.css" /><!-- main css -->
+
+<!-- jquery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <style>
   *{margin: 0; padding: 0;
   font-family: 'LeferiPoint-WhiteObliqueA';}
@@ -19,7 +30,9 @@
   font-style: normal;
 }
 #super{
-  width: 100vw; height: 100vh;
+position:relative;
+  top:50px;
+  margin: 0,auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,7 +42,7 @@
   height: 850px; 
   
 }
-header{
+#header{
   width: 100%; height: 20%;
 
   background-color: #999AFE;
@@ -42,9 +55,7 @@ header{
   width: 40%; height: 100%;
   /* background-color: blue; */
 }
-#logo{
-  
-}
+
 #con1{  
   width: 100%; height: 40%;
   /* background-color: blueviolet; */
@@ -57,7 +68,7 @@ header{
   padding: 15px;
   float: right;
   text-decoration: none;
-  /* border: 1px solid gray; */
+  border: 1px solid chocolate; 
   color: white;
   background-color: chocolate;
   transition: 0.5s;
@@ -65,6 +76,7 @@ header{
 .con:hover{
   color: black;
   background-color: white;
+   border: 1px solid white;
 }
 #con2{  
   width: 100%; height: 60%;
@@ -151,38 +163,70 @@ footer{
 #file{
   float: right;
 }
+#rej{
+            display: none;
+            position: fixed;
+            top: calc(50vh - 300px); left: calc(50vw - 200px);
+            background-color: #999AFE;            
+            border-radius: 10px;
+            width: 400px;
+            height: 600px;             
+            
+        }
+        #b{
+            display: flex;
+            justify-content: center; align-items: center;
+        }
+        #cus{
+            width: 90%; height: 440px;
+        }
+        #b1{
+            margin-top: 20px;
+            display: flex;
+            justify-content: center; align-items: center;
+        }
   </style>
 </head>
 <body>
+	<%@ include file="/WEB-INF/views/include/header.jsp" %>
+	<%@ include file="/WEB-INF/views/include/aside.jsp" %>
+  <c:if test="${lev==1 }">
   <form action="/vcpro" method="post">
+  </c:if>
+  <c:if test="${lev==2 }">
+  <form action="/vcprotwo" method="post">
+  </c:if>
+  <c:if test="${lev==3 }">
+  <form action="/vcprothree" method="post">
+  </c:if>
   <div id="super">
     <!-- 컨테이너 -->
     <div id="container">
       <!-- 헤더 -->
-      <header>
+      <div id="header">
         <div id="title">
-          <h1 id="logo">휴가신청서</h1>
+          <h1 id="logogo">휴가신청서</h1>
         </div>
         <div id="confirm">
           <div id="con1">
-            <a href="#" class="con">결재선</a><a href="#" class="con">임시저장</a><a href="#" class="con">수정</a><a href="#" class="con" onclick="submit();">결재</a>
+            <input class="con" type="submit" value="결재">
           </div>
           <div id="con2">
             <div id="stamp">
-              <img id="seal" src="asdassd.jpg">              <!-- 도장 -->
+               <img id="seal"  alt=""  src="http://localhost:8080/image/<c:choose><c:when test="${list.mem_stamp_three!=null }">${list.mem_stamp_three} </c:when><c:otherwise>alt.jpg</c:otherwise></c:choose>">              <!-- 도장 -->
               <p id="who">부장</p>				<!-- src 부장 -->
             </div>
             <div id="stamp">
-              <img id="seal" src="camera.png">			<!-- 도장 -->
+              <img id="seal"  alt=""  src="http://localhost:8080/image/<c:choose><c:when test="${list.mem_stamp_two!=null }">${list.mem_stamp_two} </c:when><c:otherwise>alt.jpg</c:otherwise></c:choose>">			<!-- 도장 -->
               <p id="who">팀장</p>				<!-- src 팀장 -->
             </div>
             <div id="stamp">
-              <img id="approver" src="04d.png">				<!-- 도장 -->
-              <p id="who">본인</p>				<!-- src 본인 -->
+              <img id="seal"  alt="" src="http://localhost:8080/image/<c:choose><c:when test="${list.mem_stamp_one!=null }">${list.mem_stamp_one} </c:when><c:otherwise>alt.jpg</c:otherwise></c:choose>">				<!-- 도장 -->
+              <p id="who">본인</p>					<!-- src 본인 -->
             </div>           
           </div>
         </div>
-      </header>
+      </div>
       <!-- 어사이드 -->
       <aside>
         <div id="date">
@@ -191,7 +235,7 @@ footer{
         <div id="no">
           <div id="left" class="aa">
             <p>문서번호:<span id="docno"></span><!-- <input type="text" name="docno"> --></p>
-            <p>기안자:<span id="writer"></span><!-- <input type="text" name="writer"> --></p>
+            <p>기안자:<span id="writer"></span></p>
           </div>
           <div id="right" class="aa">
             <p>기안부서:<span id="deptname"></span><!-- <input type="text" name="deptname"> --></p>
@@ -216,8 +260,7 @@ footer{
         </div>
       </footer>
     </div>
-  </div>
-  <input type="submit" value="결재">
+  </div>  
 </form>
 <script>
 	

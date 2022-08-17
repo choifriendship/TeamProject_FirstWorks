@@ -1,0 +1,45 @@
+@charset "UTF-8";
+section {
+    width: 87%;
+    height: 94%;
+    float: right;
+    overflow: auto;
+}
+#a1{
+    width: 90%;
+    height: 40%;
+    margin: 1% auto;
+}
+#a2{
+    width: 90%;
+    height: 40%;
+    margin: 2% auto 1% auto;
+}
+.mobileTitle{
+    display: none;
+}
+.mainTitle{
+    display: inline-block;
+    width: 28%;
+    font-size: 1.4rem;
+    margin: 1% 2%;
+}
+#todayWork, #myInfo{
+    background-color: #F7F9FA;
+    border-radius: 0.6rem;
+    float: left;
+    width: 28%;
+    height: 100%;
+    margin: 0 1%;
+}
+#restInfo{
+    border-radius: 0.6rem;
+    float: left;
+    width: 28%;
+    height: 100%;
+    margin: 0 1%;
+    display: grid;
+	grid-template-rows: 40% 10% 40%;
+	gap: 4% 0;
+}
+
