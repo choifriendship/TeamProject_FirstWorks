@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<!-- 이모티콘 -->
+<script src="https://kit.fontawesome.com/616f27e0c4.js" crossorigin="anonymous"></script>
+<!-- jquery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <link rel="stylesheet" type="text/css" href="/resources/css/header.css" /><!-- header css -->
 <link rel="stylesheet" type="text/css" href="/resources/css/aside.css" /><!-- main css -->
 <link rel="stylesheet" type="text/css" href="/resources/css/basic.css" /><!-- basic css -->
