@@ -10,7 +10,7 @@
 		</selectKey>
 		insert into calendar values(#{id}, #{title}, #{txt},
 			#{start}, #{end}, #{type}, #{dept_no},
-			#{backgroundColor}, #{textColor}, #{allDay}, #{mem_no})
+			#{backgroundColor}, #{textColor}, #{allDay}, (select mem_no from mem_tb where mem_no = #{mem_no}))
 	</insert>
 	
 	<!-- 일정 출력 -->
