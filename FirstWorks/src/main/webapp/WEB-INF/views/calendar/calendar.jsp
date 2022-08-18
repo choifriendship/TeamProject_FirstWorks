@@ -193,10 +193,10 @@
     <script src="${pageContext.request.contextPath}/resources/calendar/vendor/js/ko.js"></script>
     <script src="${pageContext.request.contextPath}/resources/calendar/vendor/js/select2.min.js"></script>
     <script src="${pageContext.request.contextPath}/resources/calendar/vendor/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/calendar/js/main.js?ver=3"></script>
-    <script src="${pageContext.request.contextPath}/resources/calendar/js/addEvent.js?ver=3"></script>
-    <script src="${pageContext.request.contextPath}/resources/calendar/js/editEvent.js?ver=3"></script>
-    <script src="${pageContext.request.contextPath}/resources/calendar/js/etcSetting.js?ver=3"></script>
+    <script src="${pageContext.request.contextPath}/resources/calendar/js/main.js?ver=1"></script>
+    <script src="${pageContext.request.contextPath}/resources/calendar/js/addEvent.js?ver=1"></script>
+    <script src="${pageContext.request.contextPath}/resources/calendar/js/editEvent.js?ver=1"></script>
+    <script src="${pageContext.request.contextPath}/resources/calendar/js/etcSetting.js?ver=1"></script>
     
 </body>
 </html>

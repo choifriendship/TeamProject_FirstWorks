@@ -13,59 +13,57 @@ import org.springframework.web.util.HtmlUtils;
 import com.groupware.dto.CalendarDTO;
 import com.groupware.service.CalendarService;
 
-
-
 @Controller
 public class CalendarController {
-   @Autowired
-   private CalendarService service;
-   
-   //Ä¶¸°´õ ºä º¸¿©ÁÖ´Â ¸Þ¼Òµå
-   @RequestMapping(value = "/calendar", method = RequestMethod.GET)
-   public String calendar() {          
-         return "calendar/calendar";
-   }
-   
-   //ÀÏÁ¤
-   @RequestMapping(value = "/schedule", method = RequestMethod.GET)
-   @ResponseBody
-   public CalendarDTO calendar(@RequestParam  int id) throws Exception {
-      return service.getCalendar(id);
-   }
+	@Autowired
+	private CalendarService service;
 
-   //ÀÏÁ¤ ¸ñ·Ï
-   @RequestMapping(value = "/calendarList", method = RequestMethod.GET)
-   @ResponseBody
-   public List<CalendarDTO> calendarList() throws Exception {
-      return service.getList();
-   }
-   
-   //ÀÏÁ¤ Ãß°¡ ¸Þ¼Òµå
-   @RequestMapping(value = "/calendarInsert", method = RequestMethod.POST)
-   @ResponseBody
-   public String calendarInsert(CalendarDTO dto) throws Exception {
-      dto.setTitle(HtmlUtils.htmlEscape(dto.getTitle()));
-      dto.setTxt(HtmlUtils.htmlEscape(dto.getTxt()));
-      service.add(dto);
-      return "success";
-   }
-   
-   //ÀÏÁ¤ º¯°æ
-   @RequestMapping(value = "/calendarUpdate", method = RequestMethod.POST)
-   @ResponseBody
-   public String calendarUpdate(CalendarDTO dto) throws Exception {
-      dto.setTitle(HtmlUtils.htmlEscape(dto.getTitle()));
-      dto.setTxt(HtmlUtils.htmlEscape(dto.getTxt()));
-      service.modify(dto);
-      return "success"; 
-   }
+	// Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ ï¿½Þ¼Òµï¿½
+	@RequestMapping(value = "/calendar", method = RequestMethod.GET)
+	public String calendar() {
+		return "calendar/calendar";
+	}
 
-   //ÀÏÁ¤ »èÁ¦
-   @RequestMapping(value = "/calendarRemove")
-   @ResponseBody
-   public String calendarRemove(@RequestParam int id) throws Exception {
-      System.out.println(id);
-      service.remove(id);
-      return "calendar/calendar";
-   }
+	// ï¿½ï¿½ï¿½ï¿½
+	@RequestMapping(value = "/schedule", method = RequestMethod.GET)
+	@ResponseBody
+	public CalendarDTO calendar(@RequestParam int id) throws Exception {
+		return service.getCalendar(id);
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	@RequestMapping(value = "/calendarList", method = RequestMethod.GET)
+	@ResponseBody
+	public List<CalendarDTO> calendarList() throws Exception {
+		return service.getList();
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½Þ¼Òµï¿½
+	@RequestMapping(value = "/calendarInsert", method = RequestMethod.POST)
+	@ResponseBody
+	public String calendarInsert(CalendarDTO dto) throws Exception {
+		dto.setTitle(HtmlUtils.htmlEscape(dto.getTitle()));
+		dto.setTxt(HtmlUtils.htmlEscape(dto.getTxt()));
+		service.add(dto);
+		return "success";
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	@RequestMapping(value = "/calendarUpdate", method = RequestMethod.POST)
+	@ResponseBody
+	public String calendarUpdate(CalendarDTO dto) throws Exception {
+		dto.setTitle(HtmlUtils.htmlEscape(dto.getTitle()));
+		dto.setTxt(HtmlUtils.htmlEscape(dto.getTxt()));
+		service.modify(dto);
+		return "success";
+	}
+
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	@RequestMapping(value = "/calendarRemove")
+	@ResponseBody
+	public String calendarRemove(@RequestParam int id) throws Exception {
+		System.out.println(id);
+		service.remove(id);
+		return "calendar/calendar";
+	}
 }
