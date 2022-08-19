@@ -8,5 +8,9 @@
 </head>
 <body>
 <h2>메일 전송 실패 </h2>
+<script type="text/javascript">
+	alert("메일주소를 정확히 입력해주세요.");
+	location.href="/email/write";
+</script>
 </body>
 </html>

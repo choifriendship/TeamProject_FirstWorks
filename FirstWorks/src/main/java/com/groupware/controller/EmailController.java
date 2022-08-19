@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.groupware.dto.Bean;
 import com.groupware.dto.EmailDTO;
+import com.groupware.dto.MemberDTO;
 import com.groupware.dto.Pagedto;
 import com.groupware.service.EmailService;
 import com.groupware.service.GroupwareService;
@@ -54,14 +55,32 @@ public class EmailController {
 		return "email/write";
 		
 	}
+	//메일 유효성 
+//	@PostMapping("/receiveck")
+//	public String receiveck(EmailDTO email) throws Exception {		
+//		if(service.send(email)==1) {	
+//			return "redirect:/main";
+//		}else {
+//			return "/";
+//		}
+//}
+
+	
+	
 	//메일 전송 프로세스
 	@PostMapping("/writepro")
 	public String writepro(EmailDTO email,RedirectAttributes rttr) {
 		log.info("register 메일 등록:"+email);
-		service.send(email);
-		rttr.addFlashAttribute("result",email.getSendermail());
+		if(service.send(email)==1) {
+			rttr.addFlashAttribute("result",email.getSendermail());
+			return "redirect:/email/sendList";			
+		}else {
+			return "/email/MailFail";
+		}
+		
+		
 	
-		return "redirect:/email/sendList";
+		
 	}
 	
 	//받은  메일 함 

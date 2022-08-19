@@ -7,7 +7,7 @@ import com.groupware.dto.EmailDTO;
 public interface EmailService {
 	
 	
-	public void send(EmailDTO email); //���� ����
+//	public void send(EmailDTO email); //���� ����
 	
 	public List<EmailDTO> getList(); //��ü ���� Ȯ�� 
 	
@@ -42,6 +42,9 @@ public interface EmailService {
 	public int revoke(int mailnum);//������� ��� ����
 
 	public void restore(int mailnum);
+
+
+	public int send(EmailDTO email);
 
 
 

@@ -12,7 +12,7 @@ public interface EmailMapper {
 
 	public List<EmailDTO> getList();
 	
-	void insert (EmailDTO email);//���Ͼ���
+	public EmailDTO insert(EmailDTO email);//���Ͼ���
 
 	
 	public List<EmailDTO> sendList(EmailDTO dto);//����������
@@ -47,6 +47,8 @@ public interface EmailMapper {
 	public void delupdate(int mailnum);  //�Խñ� �Ⱥ��̰�
 
 	public int restore(int mailnum);
+
+	public int receiveck(EmailDTO email);
 
 	
 

@@ -42,7 +42,7 @@
 values (eml.nextval,#{memnum},#{sendermail},#{receivemail},#{title},#{content},sysdate,0,0) 
 </insert>
 
-<!-- 받은 메일함 -->
+<!-- 받은 메일함  -->
 <select id="receiveList" resultType="com.groupware.dto.EmailDTO">
 select *
 from Email
@@ -65,6 +65,7 @@ where receivemail =#{receivemail} and delck=0
 select *
 from Email
 where sendermail =#{sendermail}
+order by mailnum desc
 
 </select>
 
@@ -105,7 +106,7 @@ where mailnum=#{mailnum}
 select *
 from Email
 where readck=0 and receivemail =#{receivemail}
-order by registerDate
+order by mailnum desc
 
 </select>
 
@@ -143,5 +144,26 @@ update Email
 set delck =0 
 where mailnum=#{mailnum}
 </update>
+
+
+<!-- 메일 유효성 검사 -->
+<!-- Receive mail 이 mem_tb에 존재하는 mem_eml 이어야함 . -->
+
+<select id="receiveck"  resultType="int">
+
+select count(*)
+from mem_tb
+where mem_eml = #{receivemail}
+
+
+</select>
+
+<insert id="receivetest">
+
+insert into email values (eml.nextval,#{memnum},#{sendermail},(select mem_eml from mem_tb where mem_eml=#{receivemail}),#{title},#{content},sysdate,0,0) 
+
+</insert>
+
+
 
 </mapper>

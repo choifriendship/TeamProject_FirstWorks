@@ -23,9 +23,15 @@ public class EmailServiceImpl implements EmailService{
 	
 	//메일등록
 	@Override
-	public void send(EmailDTO email) {
+	public int send(EmailDTO email) {
 		log.info("register......."+email);
-		mapper.insert(email);
+		if(mapper.receiveck(email)==1) {
+			mapper.insert(email);
+			return 1;
+		}
+		else {
+			return 0;
+		}
 	}
 	
 	//전체 메일함
@@ -135,6 +141,16 @@ public class EmailServiceImpl implements EmailService{
 		mapper.restore(mailnum);
 		
 	}
+
+	//유효성 검사
+//	@Override
+//	public int receiveck(EmailDTO email) {
+//		if(mapper.receiveck(email)==1) {
+//			
+//		}
+//		
+//		return 0;
+//	}
 
 	
 
