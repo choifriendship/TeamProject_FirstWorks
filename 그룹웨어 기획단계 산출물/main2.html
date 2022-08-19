@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    <<<<<<< HEAD * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 1500px;
+      height: 800px;
+      margin: 0 auto;
+      position: relative;
+      top: 80px;
+
+    }
+
+    header {
+      width: 100%;
+      height: 15%;
+      background-color: rgb(133, 109, 139);
+      display: flex;
+    }
+
+    .logo {
+      width: 10%;
+      height: 100%;
+      flex: 2;
+    }
+
+    nav {
+      width: 85%;
+      height: 100%;
+      display: flex;
+
+    }
+
+    ul {
+      display: flex;
+    }
+
+    ul li {
+
+      width: 180px;
+      height: 100%;
+      list-style: none;
+      line-height: 6.0;
+
+      background-color: rgb(207, 5, 5);
+
+
+    }
+
+    a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .main {
+      width: 100%;
+      height: 85%;
+    }
+
+    section {
+      float: left;
+    }
+
+    #section1 {
+      width: 15%;
+      height: 100%;
+      background-color: rgb(177, 177, 177);
+    }
+
+    #section2 {
+      width: 85%;
+      height: 100%;
+    }
+
+    #article1 {
+      clear: both;
+      width: 100%;
+      height: 40%;
+
+    }
+
+    .article1_box {
+      width: 20%;
+      height: 80%;
+      float: left;
+      position: relative;
+      top: 5%;
+      left: 3%;
+      margin: 2%;
+      border: 1px solid black;
+    }
+
+    #article2 {
+      clear: both;
+      width: 100%;
+      height: 60%;
+
+    }
+
+    .article2_box {
+      width: 30%;
+      height: 70%;
+      float: left;
+      position: relative;
+      top: 5%;
+
+      =======@font-face {
+        font-family: 'LeferiPoint-WhiteObliqueA';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: 'LeferiPoint-WhiteObliqueA';
+      }
+
+      /* 컨테이너 */
+      .container {
+        width: 1500px;
+        height: 800px;
+        margin: 0 auto;
+        position: relative;
+        top: 80px;
+
+      }
+
+      /* 헤더 */
+      header {
+        width: 100%;
+        height: 15%;
+        border-top: 2px solid #999afe;
+        border-bottom: 2px solid #999afe;
+
+        display: flex;
+      }
+
+      /*로고가 들어갈 곳*/
+      .logo {
+        width: 15%;
+        height: 100%;
+        float: left;
+      }
+
+      /*로고 글씨 or image*/
+      .logo h3 {
+        text-align: center;
+        position: relative;
+        top: 30%;
+        font-size: x-large;
+
+      }
+
+      /*메인 네비 중간부분*/
+      nav {
+        width: 70%;
+        float: left;
+        height: 100%;
+        display: flex;
+        border-left: 1px dotted #999afe;
+      }
+
+      nav ul {
+        display: flex;
+        position: relative;
+        left: 5%;
+
+      }
+
+      nav ul li {
+        width: 200px;
+        height: 100%;
+        list-style: none;
+        line-height: 7.0;
+        font-weight: 900;
+      }
+
+      a {
+        text-decoration: none;
+        font-size: 15px;
+      }
+
+      /*내정보/관리자*/
+      #admin_nav {
+        float: left;
+        width: 15%;
+        height: 100%;
+        border-left: 1px dotted #999afe;
+      }
+
+      #admin_nav ul {
+        display: flex;
+        position: relative;
+        left: 10%;
+      }
+
+      #admin_nav ul li {
+        width: 100px;
+        height: 100%;
+        list-style: none;
+        line-height: 7.0;
+      }
+
+      /* 메인 */
+      .main {
+        width: 100%;
+        height: 85%;
+      }
+
+      /* 메인> 섹션 */
+      section {
+        float: left;
+      }
+
+      /* 메인>섹션1 (내정보 있는 칸 ) */
+      #section1 {
+        width: 15%;
+        height: 100%;
+        background-color: #dcd8e8
+      }
+
+      #profile {
+        width: 80%;
+        height: 30%;
+        margin: 0 auto;
+        background-color: #e2ebee;
+      }
+
+      #info {
+        width: 100%;
+        height: 20%;
+        padding: 5%;
+      }
+
+      #profile_nav {
+        width: 100%;
+        height: 50%;
+
+      }
+
+      #profile_nav ul {
+        display: inline-block;
+
+
+      }
+
+      #profile_nav ul li {
+        float: left;
+        list-style: none;
+        padding: 10px;
+        width: 100%;
+        line-height: 5.5;
+        font-weight: 600;
+        border-bottom: 1px solid white;
+
+      }
+
+      #profile_nav ul li a {
+        color: black;
+      }
+
+      /* 메인>섹션2 (내정보 제외한 부분 ) */
+      #section2 {
+        width: 85%;
+        height: 100%;
+      }
+
+      /* 메인>섹션2> 아티클1 위 부분(작은 박스 4개 있는 부분 ) */
+
+      #article1 {
+        clear: both;
+        width: 100%;
+        height: 40%;
+
+      }
+
+      /* 작은 박스 4개 묶음  */
+      .article1_box {
+        width: 20%;
+        height: 80%;
+        float: left;
+        position: relative;
+        top: 5%;
+        left: 3%;
+        margin: 2%;
+        border: 1px solid black;
+      }
+
+      /* 메인>섹션2> 아티클2 아래부분 (큰 박스 3개 있는 부분 ) */
+      #article2 {
+        clear: both;
+        width: 100%;
+        height: 60%;
+
+      }
+
+      /* 큰 박스 3개 묶음  */
+      .article2_box {
+        width: 30%;
+        height: 70%;
+        float: left;
+        position: relative;
+        top: 5%;
+
+
+        margin: 3% 0 0 3%;
+        border: 1px solid black;
+      }
+
+      #now_time {
+        width: 100%;
+        height: 30%;
+        text-align: center;
+      }
+
+      /* 출 퇴근 버튼*/
+      input[type=button] {
+        width: 80%;
+        background-color: #999afe;
+        border: none;
+        color: white;
+        padding: 16px 32px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+        position: relative;
+        left: 10%;
+
+      }
+
+      >>>>>>>8bdb4d63d3c2f76cb0cb904b168e489da788c427 margin: 3% 0 0 3%;
+      border: 1px solid black;
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <header>
+      <!--헤더 -->
+
+      <<<<<<< HEAD <div class="logo">
+  </div>
+  <nav>
+    <ul>
+
+      <li><a href="@">공지사항</a></li>
+      <li><a href="@">전자결재</a></li>
+      <li><a href="@">일정관리</a></li>
+      <li><a href="@">근태관리</a></li>
+      <li><a href="@">자유게시판</a></li>
+      <li><a href="@">내정보</a></li>
+      <li><a href="@">관리자모드</a></li>
+    </ul>
+  </nav>
+
+  </header>
+  <div class="main">
+    <!--메인-->
+    <section id="section1">
+      내정보
+      =======
+      <div class="logo">
+        <h3> First- works</h3>
+      </div>
+      <nav>
+        <ul>
+
+          <li><a href="@">공지사항</a></li>
+          <li><a href="@">전자결재</a></li>
+          <li><a href="@">일정관리</a></li>
+          <li><a href="@">근태관리</a></li>
+          <li><a href="@">자유게시판</a></li>
+
+        </ul>
+      </nav>
+      <div id="admin_nav">
+        <ul>
+          <li><a href="@">내정보</a></li>
+          <li><a href="@">관리자모드</a></li>
+
+        </ul>
+
+
+      </div>
+
+      </header>
+      <div class="main">
+        <!--메인-->
+        <section id="section1">
+          <div id="profile">
+            프로필 이미지
+          </div>
+          <div id="info">
+            <p>이름: </p>
+            <p>부서: </p>
+            <p>직급: </p>
+          </div>
+
+          <div id="profile_nav">
+            <ul>
+              <li><a href="@">Message</a></li>
+              <li><a href="@">E-mail</a></li>
+              <li><a href="@">Projects</a></li>
+
+            </ul>
+
+
+          </div>
+
+
+          >>>>>>> 8bdb4d63d3c2f76cb0cb904b168e489da788c427
+
+        </section>
+        <section id="section2">
+
+
+
+          <<<<<<< HEAD <article id="article1">
+            <h2>환영합니다</h2>
+            <div class="article1_head">
+              아티클1
+              =======
+              <article id="article1">
+                <h2>환영합니다</h2>
+                <div class="article1_head">
+                  <!--아티클1-->
+                  >>>>>>> 8bdb4d63d3c2f76cb0cb904b168e489da788c427
+
+                </div>
+
+
+                <<<<<<< HEAD <div class="article1_box">결재대기중 문서
+            </div>
+            <div class="article1_box">미확인 메일</div>
+            <div class="article1_box">오늘의 일정</div>
+            <div class="article1_box">업무관리</div>
+            =======
+            </article>
+
+            <article id="article2">
+              <!--아티클2-->
+              <div class="article2_box">공지사항</div>
+              <div class="article2_box">오늘의 일정</div>
+              <div class="article2_box">
+                출결정보
+                <div id="now_time">
+                  현재시각:
+                </div>
+
+                <input type="button" value="출근">
+                <input type="button" value="퇴근">
+
+              </div>
+              >>>>>>> 8bdb4d63d3c2f76cb0cb904b168e489da788c427
+
+
+            </article>
+
+            <article id="article2">
+              <!--아티클2-->
+              <div class="article2_box">공지사항</div>
+              <div class="article2_box">오늘의 일정</div>
+              <div class="article2_box">출결정보</div>
+
+
+            </article>
+
+        </section>
+
+      </div>
+  </div>
+</body>
+
+</html>

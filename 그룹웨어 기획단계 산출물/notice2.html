@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    
+  </head>
+  <style>
+      *{
+        margin: 0; padding: 0;
+        text-align: center;
+    }
+    
+    .container{
+        width: 1500px;
+        height: 800px;
+        position: relative;
+        top: 50px;
+        margin: 0 auto;
+    }
+    
+    header{
+    width: 100%; height: 15%;
+    border-top: 2px solid  #999afe;
+    border-bottom: 2px solid  #999afe; 
+    display: flex;
+  }
+                  /*로고가 들어갈 곳*/
+                    .logo{
+                      width: 15%; height: 100%;
+                      float: left;
+                    }
+                     /*로고 글씨 or image*/
+                    .logo h3{
+                      text-align: center;
+                      position: relative;
+                      top: 30%;
+                      font-size: x-large; 
+
+                    }
+                    /*메인 네비 중간부분*/
+                    nav{
+                      width:70%;
+                      float: left;
+                      height: 100%;
+                      display: flex;
+                      border-left:1px dotted #999afe; 
+                    }
+                    nav ul{
+                      display: flex;
+                      position: relative;
+                      left: 5%;
+                
+                    }
+                    nav ul li{
+                      width:150px; height: 100%;
+                    list-style: none;
+                    line-height: 7.0;
+                    font-weight: 900;
+                  }
+                    a{text-decoration:none;font-size:15px; } 
+                  /*내정보/관리자*/
+                  #admin_nav{
+                    float: left;
+                    width: 15%; height: 100%;
+                    border-left:1px dotted #999afe; 
+                  }
+                  #admin_nav ul{
+                    display: flex;
+                    position: relative;
+                      left: 10%;
+                  }
+                  #admin_nav ul li{
+                    width: 100px; height: 100%;
+                    list-style: none;
+                    line-height: 7.0;
+                  }
+  
+  
+        #home{
+            float: left;
+        }
+        .header #notice{
+            float: left;
+            font-size: xx-large;
+            line-height: 3.0;
+        }
+        #logout{
+            float: right;
+        }
+    .header_2{
+        width: 100%;
+        height: 3%;
+        float: left;
+        background-color: gray;
+    }
+    .header3{
+        clear: both;
+        width: 100%;
+        height: 10%;
+        background-color: #999AFE;
+        position: relative;
+    }
+
+.container2{
+    float: right;
+    width: 50%;
+}
+select{
+ float: right;
+ position: relative;
+ right: 10px;
+}
+
+.btn:hover{
+    color:#fff;
+}
+
+.input-text:focus{
+    box-shadow: 0px 0px 0px;
+    border-color:#f8c146;
+    outline: 0px;
+}
+
+.form-control {
+    border: 1px solid #f8c146;
+}
+
+
+ 
+  </style>
+  <body>
+    <div class="container">
+        <header>
+            <!--헤더 -->
+            <div class="logo">
+               <h3> hello- works</h3>
+            </div>
+            <nav>
+              <ul>
+            
+                <li><a href="@">공지사항</a></li>
+                <li><a href="@">전자결재</a></li>
+                <li><a href="@">일정관리</a></li>
+                <li><a href="@">근태관리</a></li>
+                <li><a href="@">자유게시판</a></li>
+            
+              </ul>
+            </nav>
+            <div id="admin_nav">
+              <ul>
+                <li><a href="@">내정보</a></li>
+                <li><a href="@">관리자모드</a></li>
+            
+              </ul>
+            </div>
+        </header>
+<div class="header_2">
+ 
+</div>
+
+
+<div class="header3">
+
+
+    <div class="container2">
+        <div class="row">
+           <div class="col-md-8">
+               <div class="input-group mb-3">
+      <input type="text" class="form-control input-text" placeholder="Search products....">
+      <div class="input-group-append">
+        <button class="btn btn-outline-warning btn-lg" type="button"><i class="fa fa-search"></i></button>
+                </div>
+            </div>  
+           </div>        
+        </div>    
+    </div>
+    <select name="menu" size="1">
+        <option value="작성자">작성자</option>
+        <option value="짬뽕" selected>짬뽕</option>
+        <option value="탕수육">탕수육</option>
+        <option value="잡채밥" selected>잡채밥</option>
+        <option value="깐풍기">깐풍기</option>
+    </select>
+<!--검색창-->
+</div>
+<div id="main">
+
+
+
+
+    <table class="table table-hover table-striped text-center" style="border: 1px solid;">
+
+    <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>공지사항 1</td>
+            <td>홍길동 1</td>
+           
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>공지사항 2</td>
+            <td>홍길동 2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>공지사항 3</td>
+            <td>홍길동 3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>공지사항 4</td>
+            <td>홍길동 4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>공지사항 5</td>
+            <td>홍길동 5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>공지사항 6</td>
+            <td>홍길동 6</td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <div>
+        <ul class="pagination justify-content-center">
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> ◀ </a></li>
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> 1 </a></li>
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> 2 </a></li>
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> 3 </a></li>
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> 4 </a></li>
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> 5 </a></li>
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> ▶ </a></li>
+
+        </ul>
+    </div>
+</div>
+</div>
+  </body>
+</html>

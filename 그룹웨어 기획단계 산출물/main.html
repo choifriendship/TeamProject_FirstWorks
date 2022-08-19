@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @font-face {
+      font-family: 'LeferiPoint-WhiteObliqueA';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'LeferiPoint-WhiteObliqueA';
+
+    }
+
+    /* 컨테이너 */
+    .container {
+      width: 1200px;
+      height: 800px;
+      margin: 0 auto;
+    }
+
+    .mainlogo {
+      margin: 0 auto;
+      float: right;
+
+    }
+
+    /* 헤더 */
+    header {
+      width: 100%;
+      height: 14%;
+      border-top: 2px solid #999afe;
+      border-bottom: 2px solid #999afe;
+
+      display: flex;
+    }
+
+    /*로고가 들어갈 곳*/
+    .logo {
+      width: 15%;
+      height: 100%;
+      float: left;
+    }
+
+    /*로고 글씨 or image*/
+    .logo h3 {
+      text-align: center;
+      position: relative;
+      top: 30%;
+      font-size: x-large;
+
+    }
+
+    /*메인 네비 중간부분*/
+    nav {
+      width: 70%;
+      float: left;
+      height: 100%;
+      line-height: 7.0;
+      border-left: 1px dotted #999afe;
+      text-align: center;
+    }
+
+    nav ul li {
+      float: left;
+      width: 20%;
+      height: 100%;
+      list-style: none;
+      font-weight: 900;
+      position: relative;
+    }
+
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      width: 100%;
+      z-index: 2;
+    }
+
+    nav ul li:hover ul {
+      display: block;
+      background-color: #999afe;
+
+
+    }
+
+    nav ul li ul li {
+
+      width: 100%;
+      line-height: 4.0;
+
+    }
+
+    nav ul li ul li:hover {
+      background-color: #dcd8e8;
+    }
+
+
+    a {
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    /*내정보/관리자*/
+    #admin_nav {
+      float: left;
+      width: 15%;
+      height: 100%;
+      border-left: 1px dotted #999afe;
+    }
+
+    #admin_nav ul {
+      display: flex;
+      position: relative;
+      left: 10%;
+    }
+
+    #admin_nav ul li {
+      width: 100px;
+      height: 100%;
+      list-style: none;
+      line-height: 7.0;
+    }
+
+    /* 메인 */
+    .main {
+      width: 100%;
+      height: 85%;
+    }
+
+    /* 메인> 섹션 */
+    section {
+      float: left;
+    }
+
+    /* 메인>섹션1 (내정보 있는 칸 ) */
+    #section1 {
+      width: 15%;
+      height: 100%;
+      background-color: #dcd8e8
+    }
+
+    #profile {
+      width: 80%;
+      height: 30%;
+      margin: 0 auto;
+      background-color: #e2ebee;
+    }
+
+    #info {
+      width: 100%;
+      height: 20%;
+      padding: 5%;
+    }
+
+    #profile_nav {
+      width: 100%;
+      height: 50%;
+
+    }
+
+    #profile_nav ul {
+      display: inline-block;
+
+
+    }
+
+    #profile_nav ul li {
+      float: left;
+      list-style: none;
+      padding: 10px;
+      width: 100%;
+      line-height: 5.5;
+      font-weight: 600;
+      border-bottom: 1px solid white;
+
+    }
+
+    #profile_nav ul li a {
+      color: black;
+    }
+
+    /* 메인>섹션2 (내정보 제외한 부분 ) */
+    #section2 {
+      width: 85%;
+      height: 100%;
+    }
+
+    /* 메인>섹션2> 아티클1 위 부분(작은 박스 4개 있는 부분 ) */
+
+    #article1 {
+      clear: both;
+      width: 100%;
+      height: 40%;
+
+    }
+
+    /* 작은 박스 4개 묶음  */
+    .article1_box {
+      width: 20%;
+      height: 80%;
+      float: left;
+      position: relative;
+      top: 5%;
+      left: 3%;
+      margin: 2%;
+      border: 1px solid black;
+    }
+
+    /* 메인>섹션2> 아티클2 아래부분 (큰 박스 3개 있는 부분 ) */
+    #article2 {
+      clear: both;
+      width: 100%;
+      height: 60%;
+
+    }
+
+    /* 큰 박스 3개 묶음  */
+    .article2_box {
+      width: 30%;
+      height: 70%;
+      float: left;
+      position: relative;
+      top: 5%;
+
+
+      margin: 3% 0 0 3%;
+      border: 1px solid black;
+    }
+
+    #now_time {
+      width: 100%;
+      height: 30%;
+      text-align: center;
+    }
+
+    /* 출 퇴근 버튼*/
+    input[type=button] {
+      width: 80%;
+      background-color: #999afe;
+      border: none;
+      color: white;
+      padding: 16px 32px;
+      text-decoration: none;
+      margin: 4px 2px;
+      cursor: pointer;
+      position: relative;
+      left: 10%;
+
+    }
+
+    /* article box 로고 */
+    .img {
+      float: right;
+      margin-top: 10px;
+      width: 40px;
+    }
+
+    /* section calendar */
+
+    .sec_cal {
+      width: 360px;
+      margin: 0 auto;
+      font-family: "NotoSansR";
+    }
+
+    .sec_cal .cal_nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 78px;
+    }
+
+    .sec_cal .cal_nav .year-month {
+      width: 300px;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .sec_cal .cal_nav .nav {
+      display: flex;
+      border: 1px solid #333333;
+      border-radius: 5px;
+    }
+
+    .sec_cal .cal_nav .go-prev,
+    .sec_cal .cal_nav .go-next {
+      display: block;
+      width: 50px;
+      height: 78px;
+      font-size: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .sec_cal .cal_nav .go-prev::before,
+    .sec_cal .cal_nav .go-next::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid #000;
+      border-width: 3px 3px 0 0;
+      transition: border 0.1s;
+    }
+
+    .sec_cal .cal_nav .go-prev:hover::before,
+    .sec_cal .cal_nav .go-next:hover::before {
+      border-color: #ed2a61;
+    }
+
+    .sec_cal .cal_nav .go-prev::before {
+      transform: rotate(-135deg);
+    }
+
+    .sec_cal .cal_nav .go-next::before {
+      transform: rotate(45deg);
+    }
+
+    .sec_cal .cal_wrap {
+      padding-top: 40px;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .sec_cal .cal_wrap .days {
+      display: flex;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .sec_cal .cal_wrap::after {
+      top: 368px;
+    }
+
+    .sec_cal .cal_wrap .day {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: calc(100% / 7);
+      text-align: left;
+      color: #999;
+      font-size: 12px;
+      text-align: center;
+      border-radius: 5px
+    }
+
+    .current.today {
+      background: rgb(242 242 242);
+    }
+
+    .sec_cal .cal_wrap .dates {
+      display: flex;
+      flex-flow: wrap;
+      height: 290px;
+    }
+
+    .sec_cal .cal_wrap .day:nth-child(7n -1) {
+      color: #3c6ffa;
+    }
+
+    .sec_cal .cal_wrap .day:nth-child(7n) {
+      color: #ed2a61;
+    }
+
+    .sec_cal .cal_wrap .day.disable {
+      color: #ddd;
+    }
+  </style>
+
+
+</head>
+<script>
+  $(document).ready(function () {
+    calendarInit();
+  });
+  /*
+      달력 렌더링 할 때 필요한 정보 목록 
+  
+      현재 월(초기값 : 현재 시간)
+      금월 마지막일 날짜와 요일
+      전월 마지막일 날짜와 요일
+  */
+
+  function calendarInit() {
+
+    // 날짜 정보 가져오기
+    var date = new Date(); // 현재 날짜(로컬 기준) 가져오기
+    var utc = date.getTime() + (date.getTimezoneOffset() * 60 * 1000); // uct 표준시 도출
+    var kstGap = 9 * 60 * 60 * 1000; // 한국 kst 기준시간 더하기
+    var today = new Date(utc + kstGap); // 한국 시간으로 date 객체 만들기(오늘)
+
+    var thisMonth = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    // 달력에서 표기하는 날짜 객체
+
+
+    var currentYear = thisMonth.getFullYear(); // 달력에서 표기하는 연
+    var currentMonth = thisMonth.getMonth(); // 달력에서 표기하는 월
+    var currentDate = thisMonth.getDate(); // 달력에서 표기하는 일
+
+    // kst 기준 현재시간
+    // console.log(thisMonth);
+
+    // 캘린더 렌더링
+    renderCalender(thisMonth);
+
+    function renderCalender(thisMonth) {
+
+      // 렌더링을 위한 데이터 정리
+      currentYear = thisMonth.getFullYear();
+      currentMonth = thisMonth.getMonth();
+      currentDate = thisMonth.getDate();
+
+      // 이전 달의 마지막 날 날짜와 요일 구하기
+      var startDay = new Date(currentYear, currentMonth, 0);
+      var prevDate = startDay.getDate();
+      var prevDay = startDay.getDay();
+
+      // 이번 달의 마지막날 날짜와 요일 구하기
+      var endDay = new Date(currentYear, currentMonth + 1, 0);
+      var nextDate = endDay.getDate();
+      var nextDay = endDay.getDay();
+
+      // console.log(prevDate, prevDay, nextDate, nextDay);
+
+      // 현재 월 표기
+      $('.year-month').text(currentYear + '.' + (currentMonth + 1));
+
+      // 렌더링 html 요소 생성
+      calendar = document.querySelector('.dates')
+      calendar.innerHTML = '';
+
+      // 지난달
+      for (var i = prevDate - prevDay + 1; i <= prevDate; i++) {
+        calendar.innerHTML = calendar.innerHTML + '<div class="day prev disable">' + i + '</div>'
+      }
+      // 이번달
+      for (var i = 1; i <= nextDate; i++) {
+        calendar.innerHTML = calendar.innerHTML + '<div class="day current">' + i + '</div>'
+      }
+      // 다음달
+      for (var i = 1; i <= (7 - nextDay == 7 ? 0 : 7 - nextDay); i++) {
+        calendar.innerHTML = calendar.innerHTML + '<div class="day next disable">' + i + '</div>'
+      }
+
+      // 오늘 날짜 표기
+      if (today.getMonth() == currentMonth) {
+        todayDate = today.getDate();
+        var currentMonthDate = document.querySelectorAll('.dates .current');
+        currentMonthDate[todayDate - 1].classList.add('today');
+      }
+    }
+
+    // 이전달로 이동
+    $('.go-prev').on('click', function () {
+      thisMonth = new Date(currentYear, currentMonth - 1, 1);
+      renderCalender(thisMonth);
+    });
+
+    // 다음달로 이동
+    $('.go-next').on('click', function () {
+      thisMonth = new Date(currentYear, currentMonth + 1, 1);
+      renderCalender(thisMonth);
+    });
+  }
+</script>
+
+<body>
+
+  <div class="container">
+    <img class="mainlogo" src="fIRST- WORKS.png">
+    <header>
+      <!--헤더 -->
+
+      <div class="logo">
+        <img src="fIRST- WORKS2.png" alt="">
+      </div>
+      <nav>
+        <ul>
+
+          <li><a href="notice.html">공지사항</a></li>
+          <li><a href="@">일정관리</a></li>
+          <li>
+            <a href="main3.html">전자결재</a>
+            <ul>
+              <li><a href="">결재 신청 하기</a> </li>
+              <li><a href="">승인 하기</a> </li>
+            </ul>
+
+          </li>
+          <li>
+            <a href="@">근태관리</a>
+
+            <ul>
+              <li><a href="">출결정보</a> </li>
+              <li><a href="">#</a> </li>
+            </ul>
+
+          </li>
+          <li>
+            <a href="notice.html">자유게시판</a>
+
+            <ul>
+              <li><a href="">출결정보</a> </li>
+              <li><a href="">#</a> </li>
+            </ul>
+
+          </li>
+
+        </ul>
+      </nav>
+      <div id="admin_nav">
+        <ul>
+          <li><a href="@">내정보</a></li>
+          <li><a href="@">로그아웃</a></li>
+
+        </ul>
+
+
+      </div>
+
+    </header>
+    <div class="main">
+      <!--메인-->
+      <section id="section1">
+        <div id="profile">
+          프로필 이미지
+        </div>
+        <div id="info">
+          <p>이름: </p>
+          <p>부서: </p>
+          <p>직급: </p>
+        </div>
+
+        <div id="profile_nav">
+          <ul>
+            <li><a href="@">Message</a></li>
+            <li><a href="@">E-mail</a></li>
+            <li><a href="@">Projects</a></li>
+
+          </ul>
+
+
+        </div>
+
+
+
+      </section>
+      <section id="section2">
+
+
+
+        <article id="article1">
+          <h2>환영합니다</h2>
+          <div class="article1_head">
+            <!--아티클1-->
+
+          </div>
+
+
+          <div class="article1_box">결재대기중 문서
+            <img class="img" src="image/결재대기중 문서.png" />
+          </div>
+          <div class="article1_box">미확인 메일
+            <img class="img" src="image/미확인메일.png" />
+          </div>
+          <!-- <div class="article1_box">오늘의 일정
+            <img class="img" src="image/오늘의일정.png" />
+          </div>
+          <div class="article1_box">업무관리
+            <img class="img" src="image/업무관리.png" />
+          </div> -->
+          <div class="sec_cal">
+            <div class="cal_nav">
+              <a href="javascript:;" class="nav-btn go-prev">prev</a>
+              <div class="year-month"></div>
+              <a href="javascript:;" class="nav-btn go-next">next</a>
+            </div>
+            <div class="cal_wrap">
+              <div class="days">
+                <div class="day">MON</div>
+                <div class="day">TUE</div>
+                <div class="day">WED</div>
+                <div class="day">THU</div>
+                <div class="day">FRI</div>
+                <div class="day">SAT</div>
+                <div class="day">SUN</div>
+              </div>
+              <div class="dates"></div>
+            </div>
+          </div>
+
+        </article>
+
+        <article id="article2">
+          <!--아티클2-->
+          <div class="article2_box">공지사항</div>
+          <div class="article2_box">오늘의 일정</div>
+          <div class="article2_box">
+            출결정보
+            <div id="now_time">
+              현재시각:
+            </div>
+
+            <input type="button" value="출근">
+            <input type="button" value="퇴근">
+
+          </div>
+
+
+        </article>
+
+      </section>
+
+    </div>
+  </div>
+</body>
+
+</html>

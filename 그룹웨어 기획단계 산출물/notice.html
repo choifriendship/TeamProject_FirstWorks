@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    
+  </head>
+  <style>
+        @font-face {
+    font-family: 'LeferiPoint-WhiteObliqueA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+ *{
+      margin: 0; padding: 0;
+      font-family: 'LeferiPoint-WhiteObliqueA';
+      text-align: center;
+      
+    }    
+    .container{
+        width: 1200px; height: 800px;
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+    
+ /* 헤더 */
+ header{
+    width: 100%; height: 14%;
+    border-top: 2px solid  #999afe;
+    border-bottom: 2px solid  #999afe;
+
+    display: flex;
+  }
+                  /*로고가 들어갈 곳*/
+                    .logo{
+                      width: 15%; height: 100%;
+                      float: left;
+                    }
+                     /*로고 글씨 or image*/
+                    .logo h3{
+                      text-align: center;
+                      position: relative;
+                      top: 30%;
+                      font-size: x-large; 
+
+                    }
+                    /*메인 네비 중간부분*/
+                    nav{
+                      width:70%;
+                      float: left;
+                      height: 100%;
+                      line-height: 7.0;
+                      border-left:1px dotted #999afe; 
+                      text-align: center;
+                    }
+                    nav ul li{
+                      float: left;
+                      width:20%; height: 100%;
+                    list-style: none;
+                    font-weight: 900;
+                    position: relative;
+                  }
+                  nav ul li ul {
+                    display: none;
+                    position: absolute;
+                    width: 100%; 
+                    z-index: 2;
+                  }
+                  nav ul li:hover ul {
+                    display: block;
+                    background-color: #999afe;
+                 
+                
+                  }
+                  nav ul li ul li{
+  
+                    width: 100%; 
+                    line-height: 4.0;
+                   
+                  }
+                  nav ul li ul li:hover{
+                    background-color: #dcd8e8;
+                  }
+
+
+                    a{text-decoration:none;font-size:15px; } 
+                  /*내정보/관리자*/
+                  #admin_nav{
+                    float: left;
+                    width: 15%; height: 100%;
+                    border-left:1px dotted #999afe; 
+                  }
+                  #admin_nav ul{
+                    display: flex;
+                    position: relative;
+                      left: 10%;
+                  }
+                  #admin_nav ul li{
+                    width: 100px; height: 100%;
+                    list-style: none;
+                    line-height: 7.0;
+                  }
+  
+  
+        #home{
+            float: left;
+        }
+        .header #notice{
+            float: left;
+            font-size: xx-large;
+            line-height: 3.0;
+        }
+        #logout{
+            float: right;
+        }
+
+.Search{
+  clear: both;
+  width: 100%; height: 5%;
+
+}
+.search_tab{
+  position: relative;
+  float: right;
+  left: 200px; top: 5px;
+
+    width: 50%;
+}
+select{
+ float: right;
+ left: 180px;  top: 8px;
+ position: relative;
+
+}
+
+#main{
+  width: 100%;
+}
+
+.btn:hover{
+    color:#fff;
+}
+
+.input-text:focus{
+    box-shadow: 0px 0px 0px;
+    border-color:#999afe;
+    outline: 0px;
+}
+
+.form-control {
+    border: 1px solid #999afe;
+}
+.btn{
+  border: 1px solid #999afe;
+}
+
+
+
+ 
+  </style>
+  <body>
+
+      <!--컨테이너--> 
+    <div class="container">
+
+         <!--헤더 -->
+        <header>
+          <div class="logo">
+            <a href="main.html"><h3> First- works</h3></a>
+         </div>
+         <nav>
+           <ul>
+         
+             <li><a href="@">공지사항</a></li>
+             <li><a href="@">일정관리</a></li>
+             <li>
+               <a href="main3.html">전자결재</a>
+                 <ul> 
+                       <li><a href="">결재 신청 하기</a> </li>
+                       <li><a href="">승인 하기</a> </li>
+                 </ul>
+             
+             </li>
+             <li>
+               <a href="@">근태관리</a>
+         
+                 <ul> 
+                       <li><a href="">출결정보</a> </li>
+                       <li><a href="">#</a> </li>
+                  </ul>
+         
+             </li>
+             <li>
+               <a href="@">자유게시판</a>
+         
+               <ul> 
+                 <li><a href="">출결정보</a> </li>
+                 <li><a href="">#</a> </li>
+               </ul>
+         
+             </li>
+         
+           </ul>
+         </nav>
+         <div id="admin_nav">
+           <ul>
+             <li><a href="@">내정보</a></li>
+             <li><a href="@">로그아웃</a></li>
+         
+           </ul>
+         
+         
+         </div>
+         
+        </header>
+
+<div class="Search">
+
+<!--검색창-->
+    <div class="search_tab">
+        <div class="row">
+           <div class="col-md-8">
+               <div class="input-group mb-3">
+                    <input type="text" class="form-control input-text" placeholder="Search products....">
+                        <div class="input-group-append">
+                           <button class="btn btn-outline-warning btn-lg" type="button">
+                                  <i class="fa fa-search"></i>
+                          </button>
+                          </div>
+                </div>  
+              </div>        
+            </div>    
+    </div>
+
+<!--셀렉트 박스-->
+    <select name="menu" size="1">
+        <option value="작성자">작성자</option>
+        <option value="제목" selected>제목</option>
+    </select>
+
+</div>
+
+
+
+<div id="main">
+    <table class="table table-hover table-striped text-center" style="border: 1px solid;">
+
+    <thead>
+        <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>글쓴이</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>공지사항 1</td>
+            <td>홍길동 1</td>
+           
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>공지사항 2</td>
+            <td>홍길동 2</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>공지사항 3</td>
+            <td>홍길동 3</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>공지사항 4</td>
+            <td>홍길동 4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>공지사항 5</td>
+            <td>홍길동 5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>공지사항 6</td>
+            <td>홍길동 6</td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <div>
+        <ul class="pagination justify-content-center">
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> ◀ </a></li>
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> 1 </a></li>
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> 2 </a></li>
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> 3 </a></li>
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> 4 </a></li>
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> 5 </a></li>
+            <li><a href="#" style="margin-right:5px;" class="text-secondary"> ▶ </a></li>
+
+        </ul>
+    </div>
+</div>
+</div>
+  </body>
+</html>

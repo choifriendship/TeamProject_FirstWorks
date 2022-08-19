@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/style.css">  
+</head>
+<body>
+  <form action="/vacationpro" method="post">
+  <div id="super">
+    <!-- 컨테이너 -->
+    <div id="container">
+      <!-- 헤더 -->
+      <header>
+        <div id="title">
+          <h1 id="logo">휴가신청서</h1>
+        </div>
+        <div id="confirm">
+          <div id="con1">
+            <a href="#" class="con">결재선</a><a href="#" class="con">임시저장</a><a href="#" class="con">수정</a><a href="#" class="con" onclick="submit();">결재</a>
+          </div>
+          <div id="con2">
+            <div id="stamp">
+              <img id="seal" src="tv.png">
+              <p id="who">부장</p>
+            </div>
+            <div id="stamp">
+              <img id="seal" src="camera.png">
+              <p id="who">팀장</p>
+            </div>
+            <div id="stamp">
+              <img id="seal" src="04d.png">
+              <p id="who">본인</p>
+            </div>           
+          </div>
+        </div>
+      </header>
+      <!-- 어사이드 -->
+      <aside>
+        <div id="date">
+          <p id="date1">휴가날짜:<span id="datein"></span><input name="date1" type="date"> 부터 <input type="date" name="date2"> 까지</p>
+        </div>
+        <div id="no">
+          <div id="left" class="aa">
+            <p>문서번호:<span id="docno"></span><input type="text" name="docno"></p>
+            <p>기안자:<span id="writer"></span><input type="text" name="writer"></p>
+          </div>
+          <div id="right" class="aa">
+            <p>기안부서:<span id="deptname"></span><input type="text" name="deptname"></p>
+            <p>기안일자:<span id="nowdate"></span><input type="date" name="nowdate"></p>
+          </div>
+        </div>
+        <div id="doct">
+          <h1>문서제목:<span id="doct1"></span></h1><input type="text" name="doct" id="doct2">
+        </div>
+      </aside>
+      <!-- 메인 -->
+      <main>
+        <textarea placeholder="본문내용"></textarea>
+      </main>
+      <!-- 푸터 -->
+      <footer>
+        <div id="fooleft">
+          <p>파일첨부</p>
+        </div>
+        <div id="fooright">
+          <input type="file" id="file">
+        </div>
+      </footer>
+    </div>
+  </div>
+</form>
+</body>
+</html>
